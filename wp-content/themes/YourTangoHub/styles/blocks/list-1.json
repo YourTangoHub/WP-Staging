@@ -1,0 +1,10 @@
+{
+	"version": 3,
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"title": "No Style",
+	"slug": "list-1",
+	"blockTypes": [ "core/list" ],
+	"styles": {
+		"css": "& { list-style-type: none; padding-left: 0; }"
+	}
+}

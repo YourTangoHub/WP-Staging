@@ -1,0 +1,16 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"title": "Kicker",
+	"slug": "text-kicker",
+	"blockTypes": [ "core/heading", "core/paragraph" ],
+	"styles": {
+		"typography": {
+			"fontSize": "var(--wp--preset--font-size--tiny)",
+			"fontWeight": "400",
+			"fontStyle": "normal",
+			"lineHeight": "var(--wp--custom--global--line-height--petite)"
+		},
+		"css": "& { position: relative; width: fit-content; } &::before { content: ''; width: 40px; height: 3px; margin-right: 10px; background-color: var(--wp--preset--color--primary); position: relative; display: inline-block; transform: translateY(calc(-50% - 1.5px)); }"
+	}
+}

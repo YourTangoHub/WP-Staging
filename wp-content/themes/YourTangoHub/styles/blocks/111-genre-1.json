@@ -1,0 +1,30 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"title": "Genre",
+	"slug": "text-genre",
+	"blockTypes": [ "core/heading", "core/paragraph" ],
+	"styles": {
+		"border": {
+			"color": "var(--wp--preset--color--secondary-200)",
+			"radius": "100px",
+			"width": "1px",
+			"style": "solid"
+		},
+		"spacing": {
+			"padding": {
+				"top": "8px",
+				"right": "12px",
+				"bottom": "8px",
+				"left": "12px"
+			}
+		},
+		"typography": {
+			"fontSize": "var(--wp--preset--font-size--minute)",
+			"fontWeight": "normal",
+			"fontStyle": "normal",
+			"lineHeight": "var(--wp--custom--global--line-height--petite)"
+		},
+		"css": "& { width: fit-content; }"
+	}
+}

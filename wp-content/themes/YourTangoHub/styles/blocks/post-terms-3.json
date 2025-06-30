@@ -1,0 +1,15 @@
+{
+	"version": 3,
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"title": "Hash",
+	"slug": "post-terms-3",
+	"blockTypes": [ "core/post-terms" ],
+	"styles": {
+		"css": "& { display: block; } & span:not([class], [data-rich-text-placeholder]) { display: inline-block; } & span:not([class], [data-rich-text-placeholder])::before { content: '#'; }",
+		"elements": {
+			"link": {
+				"css": "& { display: inline-block; } &::before { content: '#'; margin-right: 0.05em; }"
+			}
+		}
+	}
+}

@@ -1,0 +1,24 @@
+{
+	"version": 3,
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"title": "Minidiv",
+	"slug": "separator",
+	"blockTypes": [ "core/separator" ],
+	"styles": {
+		"border": {
+			"color": "currentColor",
+			"style": "solid",
+			"width": "0 0 3px 0"
+		},
+		"color": {
+			"text": "var(--wp--preset--color--primary)"
+		},
+		"spacing": {
+			"margin": {
+				"left": "unset",
+				"right": "unset"
+			}
+		},
+		"css": "& width: 100px;"
+	}
+}

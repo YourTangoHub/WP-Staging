@@ -1,0 +1,29 @@
+{
+	"version": 3,
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"title": "Button",
+	"slug": "read-more",
+	"blockTypes": [ "core/read-more" ],
+	"styles": {
+		"border": {
+			"radius": ".33rem"
+		},
+		"color": {
+			"background": "var(--wp--preset--color--primary)",
+			"text": "var(--wp--preset--color--secondary-50)"
+		},
+		"spacing": {
+			"padding": {
+				"bottom": "var(--wp--preset--spacing--12)",
+				"left": "var(--wp--preset--spacing--20)",
+				"right": "var(--wp--preset--spacing--20)",
+				"top": "var(--wp--preset--spacing--12)"
+			}
+		},
+		"typography": {
+			"fontSize": "var(--wp--preset--font-size--minute)",
+			"fontStyle": "normal"
+		},
+		"css": "&:hover { background-color: var(--wp--preset--color--secondary); color: var(--wp--preset--color--secondary-50); text-decoration: none; }"
+	}
+}

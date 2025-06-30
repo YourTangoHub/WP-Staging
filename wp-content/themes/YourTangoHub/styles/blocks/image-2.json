@@ -1,0 +1,10 @@
+{
+	"version": 3,
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"title": "Zoom Out",
+	"slug": "image-2",
+	"blockTypes": [ "core/image", "core/post-featured-image" ],
+	"styles": {
+		"css": "& overflow: hidden; & img { backface-visibility: hidden; transform: scale(1.07); transition: all 0.7s cubic-bezier(.2, 1, .22, 1);} &:hover img {transform: scale(1);}"
+	}
+}

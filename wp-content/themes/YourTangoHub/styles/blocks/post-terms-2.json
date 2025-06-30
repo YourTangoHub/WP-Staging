@@ -1,0 +1,42 @@
+{
+	"version": 3,
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"title": "Pill Outline",
+	"slug": "post-terms-2",
+	"blockTypes": [ "core/post-terms" ],
+	"styles": {
+		"css": "& { display: block; } & span:not([class], [data-rich-text-placeholder]) { display: inline-block; border: 1px solid currentColor; padding: .5em .75em; border-radius: 9999px; text-decoration: none; } & span:not([class], [data-rich-text-placeholder]):hover{ border: 1px solid; border-color: color-mix(in srgb, currentColor 50%, transparent); text-decoration: none !important; }",
+		"elements": {
+			"link": {
+				"css": "& { display: inline-block; }",
+				"border": {
+					"color": "currentColor",
+					"radius": "9999px",
+					"width": "1px",
+					"style": "solid"
+				},
+				"spacing": {
+					"margin": {
+						"top": "2px",
+						"bottom": "2px"
+					},
+					"padding": {
+						"top": ".5em",
+						"right": ".75em",
+						"bottom": ".5em",
+						"left": ".75em"
+					}
+				},
+				"typography": {
+					"lineHeight": "var(--wp--custom--global--line-height--petite)",
+					"textDecoration": "none"
+				},
+				":hover": {
+					"border": {
+						"color": "color-mix(in srgb, currentColor 50%, transparent)"
+					}
+				}
+			}
+		}
+	}
+}

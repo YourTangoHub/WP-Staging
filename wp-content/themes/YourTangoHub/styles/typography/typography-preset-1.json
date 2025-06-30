@@ -1,0 +1,60 @@
+{
+	"version": 3,
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"title": "DM Sans",
+	"slug": "typography-preset-1",
+	"settings": {
+		"typography": {
+			"fontFamilies": [
+				{
+					"fontFace": [
+						{
+							"fontFamily": "DM Sans",
+							"fontStyle": "normal",
+							"fontWeight": "100 1000",
+							"src": [
+								"file:./assets/fonts/dm-sans/DMSans-VariableFont.woff2"
+							]
+						},
+						{
+							"fontFamily": "DM Sans",
+							"fontStyle": "italic",
+							"fontWeight": "100 1000",
+							"src": [
+								"file:./assets/fonts/dm-sans/DMSans-Italic-VariableFont.woff2"
+							]
+						}
+					],
+					"fontFamily": "\"DM Sans\", sans-serif",
+					"name": "DM Sans",
+					"slug": "primary"
+				},
+				{
+					"fontFace": [
+						{
+							"fontFamily": "Fira Code",
+							"fontStyle": "normal",
+							"fontWeight": "300 700",
+							"src": [
+								"file:./assets/fonts/fira-code/FiraCode-VariableFont.woff2"
+							]
+						}
+					],
+					"fontFamily": "\"Fira Code\", monospace",
+					"name": "Fira Code",
+					"slug": "code"
+				},
+				{
+					"fontFamily": "-apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif",
+					"name": "System Sans-serif",
+					"slug": "system-sans-serif"
+				},
+				{
+					"fontFamily": "Iowan Old Style, Apple Garamond, Baskerville, Times New Roman, Droid Serif, Times, Source Serif Pro, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol",
+					"name": "System Serif",
+					"slug": "system-Serif"
+				}
+			]
+		}
+	}
+}

@@ -1,0 +1,131 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"title": "Flame",
+	"settings": {
+		"color": {
+			"defaultDuotone": false,
+			"defaultGradients": false,
+			"defaultPalette": false,
+			"gradients": [
+				{
+					"gradient": "linear-gradient(to top, rgba(0, 0, 0, .8), rgba(0, 0, 0, 0))",
+					"name": "Black Fade Up",
+					"slug": "black-fadeup"
+				}
+			],
+			"palette": [
+				{
+					"color": "#d14343",
+					"name": "Primary",
+					"slug": "primary"
+				},
+				{
+					"color": "#f4f5fa",
+					"name": "Light",
+					"slug": "light"
+				},
+				{
+					"color": "#d8dcf0",
+					"name": "Accent",
+					"slug": "accent"
+				},
+				{
+					"color": "#101840",
+					"name": "Secondary",
+					"slug": "secondary"
+				},
+				{
+					"color": "#1c244a",
+					"name": "Secondary 950",
+					"slug": "secondary-950"
+				},
+				{
+					"color": "#272f53",
+					"name": "Secondary 900",
+					"slug": "secondary-900"
+				},
+				{
+					"color": "#3f4666",
+					"name": "Secondary 800",
+					"slug": "secondary-800"
+				},
+				{
+					"color": "#575d79",
+					"name": "Secondary 700",
+					"slug": "secondary-700"
+				},
+				{
+					"color": "#6f748d",
+					"name": "Secondary 600",
+					"slug": "secondary-600"
+				},
+				{
+					"color": "#878b9f",
+					"name": "Secondary 500",
+					"slug": "secondary-500"
+				},
+				{
+					"color": "#9fa3b3",
+					"name": "Secondary 400",
+					"slug": "secondary-400"
+				},
+				{
+					"color": "#b7b9c5",
+					"name": "Secondary 300",
+					"slug": "secondary-300"
+				},
+				{
+					"color": "#cfd1d9",
+					"name": "Secondary 200",
+					"slug": "secondary-200"
+				},
+				{
+					"color": "#e7e7ec",
+					"name": "Secondary 100",
+					"slug": "secondary-100"
+				},
+				{
+					"color": "#fcfcfd",
+					"name": "Secondary 50",
+					"slug": "secondary-50"
+				},
+				{
+					"color": "#101841",
+					"name": "Contrast",
+					"slug": "contrast"
+				},
+				{
+					"color": "#ffffff",
+					"name": "Base",
+					"slug": "base"
+				},
+				{
+					"color": "#fafafa",
+					"name": "Base 50",
+					"slug": "base-50"
+				},
+				{
+					"color": "#f5f5f5",
+					"name": "Base 100",
+					"slug": "base-100"
+				},
+				{
+					"color": "#f0f0f0",
+					"name": "Base 200",
+					"slug": "base-200"
+				},
+				{
+					"color": "#ebebeb",
+					"name": "Base 300",
+					"slug": "base-300"
+				},
+				{
+					"color": "#000000",
+					"name": "Black",
+					"slug": "black"
+				}
+			]
+		}
+	}
+}

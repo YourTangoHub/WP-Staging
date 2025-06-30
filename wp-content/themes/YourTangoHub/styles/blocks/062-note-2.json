@@ -1,0 +1,17 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"title": "Note 2",
+	"slug": "text-note-2",
+	"blockTypes": [
+		"core/heading",
+		"core/paragraph",
+		"designorbital-blocks/countup"
+	],
+	"styles": {
+		"typography": {
+			"fontSize": "var(--wp--preset--font-size--minuscule)",
+			"lineHeight": "var(--wp--custom--global--line-height--grand)"
+		}
+	}
+}

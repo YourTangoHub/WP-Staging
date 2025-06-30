@@ -1,0 +1,16 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"title": "Cue 2",
+	"slug": "text-cue-2",
+	"blockTypes": [ "core/heading", "core/paragraph", "core/query-title" ],
+	"styles": {
+		"typography": {
+			"fontSize": "var(--wp--preset--font-size--diminutive)",
+			"fontWeight": "400",
+			"fontStyle": "normal",
+			"lineHeight": "var(--wp--custom--global--line-height--xx-large)"
+		},
+		"css": "& { position: relative; display: inline-flex; align-items: center; } &::before { content: ''; display: inline-block; width: 8px; height: 8px; margin-right: 12px; border-radius: 50%; background-color: var(--wp--preset--color--primary); position: relative; z-index: 1; } &::after { content: ''; position: absolute; width: 8px; height: 8px; left: 0; top: 50%; transform: translateY(-50%); border-radius: 50%; background-color: var(--wp--preset--color--primary); animation: designorbital-pulse 1.5s ease-in-out infinite; z-index: 0; opacity: 0; }"
+	}
+}

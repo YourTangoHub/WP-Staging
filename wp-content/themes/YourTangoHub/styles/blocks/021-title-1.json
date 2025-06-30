@@ -1,0 +1,17 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"title": "Title",
+	"slug": "text-title",
+	"blockTypes": [
+		"core/heading",
+		"core/paragraph",
+		"designorbital-blocks/countup"
+	],
+	"styles": {
+		"typography": {
+			"fontSize": "var(--wp--preset--font-size--grand)",
+			"lineHeight": "var(--wp--custom--global--line-height--small)"
+		}
+	}
+}

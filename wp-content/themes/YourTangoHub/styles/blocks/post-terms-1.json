@@ -1,0 +1,47 @@
+{
+	"version": 3,
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"title": "Pill",
+	"slug": "post-terms",
+	"blockTypes": [ "core/post-terms" ],
+	"styles": {
+		"css": "& { display: block; } & span:not([class], [data-rich-text-placeholder]) { display: inline-block; background-color: var(--wp--preset--color--primary); color: var(--wp--preset--color--base); padding: .5em .75em; border-radius: 9999px; text-decoration: none; } & span:not([class], [data-rich-text-placeholder]):hover{ background-color: color-mix(in srgb, var(--wp--preset--color--primary) 50%, transparent); text-decoration: none !important; }",
+		"elements": {
+			"link": {
+				"css": "& { display: inline-block; }",
+				"border": {
+					"radius": "9999px",
+					"width": "0"
+				},
+				"color": {
+					"background": "var(--wp--preset--color--primary)",
+					"text": "var(--wp--preset--color--base)"
+				},
+				"spacing": {
+					"margin": {
+						"top": "2px",
+						"bottom": "2px"
+					},
+					"padding": {
+						"top": ".5em",
+						"right": ".75em",
+						"bottom": ".5em",
+						"left": ".75em"
+					}
+				},
+				"typography": {
+					"lineHeight": "var(--wp--custom--global--line-height--petite)",
+					"textDecoration": "none"
+				},
+				":hover": {
+					"color": {
+						"background": "color-mix(in srgb, var(--wp--preset--color--primary) 65%, transparent)"
+					},
+					"typography": {
+						"textDecoration": "none"
+					}
+				}
+			}
+		}
+	}
+}

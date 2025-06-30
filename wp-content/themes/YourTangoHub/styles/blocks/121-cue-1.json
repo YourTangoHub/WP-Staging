@@ -1,0 +1,16 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"title": "Cue",
+	"slug": "text-cue",
+	"blockTypes": [ "core/heading", "core/paragraph" ],
+	"styles": {
+		"typography": {
+			"fontSize": "var(--wp--preset--font-size--small)",
+			"fontWeight": "400",
+			"fontStyle": "normal",
+			"lineHeight": "var(--wp--custom--global--line-height--petite)"
+		},
+		"css": "& { position: relative; padding-bottom: var(--wp--preset--spacing--20); } &::before { content: ''; position: absolute; left: 0; bottom: 0; height: 5px; width: 55px; background-color: var(--wp--preset--color--primary); } &::after { content: ''; position: absolute; left: 0; bottom: 2px; height: 1px; width: 95%; max-width: 255px; background-color: var(--wp--preset--color--primary); }"
+	}
+}
