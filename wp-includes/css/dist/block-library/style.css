@@ -2664,6 +2664,7 @@ p.has-text-align-left[style*="writing-mode:vertical-lr"],p.has-text-align-right[
 
 .wp-block-query-title,.wp-block-query-total,.wp-block-quote{
   box-sizing:border-box;
+  font-family: sans-serif;
 }
 
 .wp-block-quote{
