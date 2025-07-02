@@ -1,0 +1,24 @@
+# WordPress core
+wp-admin/
+wp-includes/
+
+# Configuration
+wp-config.php
+.env
+.env.local
+.env.*
+
+# Uploads
+wp-content/uploads/
+
+# Logs and backups
+*.log
+*.sql
+*.zip
+*.tar.gz
+*.bak
+*.tmp
+
+# OS files
+.DS_Store
+Thumbs.db
