@@ -1,0 +1,28 @@
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore IDE/editor config files
+*.swp
+*.swo
+*.swn
+*.bak
+*.tmp
+*.orig
+.vscode/
+.idea/
+
+# Ignore logs and backups
+*.log
+*.sql
+*.sqlite
+*.gz
+*.zip
+
+# Ignore environment-specific config
+wp-config.php
+.htaccess
+web.config
+
+# Ignore content that should be managed outside Git
+wp-content/uploads/
