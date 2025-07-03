@@ -2,6 +2,7 @@ header {
   position: sticky;
   top: 0px;
   border-bottom: 1px solid var(--border-color);
+  background-color: var(--white);
   .alignwide {
     display: flex;
     justify-content: space-between;
@@ -19,6 +20,7 @@ header {
       display: none;
       border:0px;
       background-color: transparent;
+
       svg{
       	width: 40px;
       	height: 40px;
@@ -44,9 +46,11 @@ header {
     }
   }
 }
+.wp-site-blocks>div.is-layout-constrained{ position:sticky; top:0px; z-index:999; background-color:var(--white); }
 
 
 @media (max-width:767px){
 	header nav button{ display:block; }
 	header nav .wp-block-navigation__responsive-container{ display:none;  }
 }
+
