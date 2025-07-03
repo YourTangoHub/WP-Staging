@@ -1,0 +1,19 @@
+:root {
+  --primary: #0006FF;
+  --border-color: #efefef;
+  --black: #000;
+}
+a {
+  text-decoration: none;
+}
+body {
+  padding: 0px;
+  margin: 0px;
+  font-family: sans-serif;
+}
+.is-layout-constrained {
+  > .alignwide {
+    padding: 1em 2.5vw 0;
+    margin: 0 auto;
+  }
+}
