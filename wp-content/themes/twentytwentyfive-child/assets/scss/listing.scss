@@ -22,6 +22,9 @@
         margin-bottom: 2rem;
         text-align: left;
         gap: 20px;
+        font-size: 17px;
+        font-weight: 600;
+        font-family: Brandon;
 
         > div {
           flex: 1;
@@ -30,8 +33,12 @@
     }
   }
 
+  .wp-block-columns-is-layout-flex p{ margin:0px; }
+
   h2 {
     a {
+      font-size: 25px;
+      font-weight: 500;
       color: var(--black);
 
       &:hover {
@@ -41,13 +48,19 @@
   }
 
   .has-xx-large-font-size {
-    font-size: 4rem;
+    font-size: 10rem;
     color: var(--primary);
-    font-weight: normal;
+    font-weight: 300;
+    font-family: Brandon;
   }
 
   .has-text-align-center {
     text-align: center;
+    time{
+      color: var(--gray);
+      font-size: 17px;
+      margin-right: 1rem;
+    }
   }
 }
 

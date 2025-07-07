@@ -12,10 +12,11 @@ footer {
   h2 {
     font-size: 1rem;
     margin: 0;
+    text-transform: uppercase;
   }
 
   nav {
-    padding: 1rem 0;
+    padding: 0 0 2rem;
 
     ul {
       list-style: none;
@@ -26,7 +27,7 @@ footer {
         margin-bottom: 0.5rem;
 
         a {
-          font-size: 2em;
+          font-size: 2.5em;
           color: var(--primary);
           text-decoration: none;
           margin-bottom: 0.5rem;
@@ -40,13 +41,13 @@ footer {
   }
 
   .wp-block-group nav ul li a {
-    font-size: 1.5em;
+    font-size: 2.15em;
   }
 }
 
 .wp-block-social-links {
   list-style: none;
-  padding: 1rem 0;
+  padding: 3rem 0;
   margin: 0;
   display: flex;
   justify-content: center;
@@ -57,8 +58,8 @@ footer {
   }
 
   svg {
-    width: 40px;
-    height: 40px;
+    width: 48px;
+    height: 48px;
   }
 }
 
