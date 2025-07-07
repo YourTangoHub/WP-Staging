@@ -51,6 +51,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 1rem;
 
   .taxonomy-category a {
     margin-left: 1rem;
@@ -80,6 +81,12 @@
       font-weight: 600;
     }
   }
+}
+
+.post-details-author.author-left-align{
+  .wp-block-post-author{
+   justify-content:left; 
+ }
 }
 
 .post-details-author-details {
