@@ -24,3 +24,10 @@ body {
 .is-layout-grid{ display:grid; }
 
 .columns-3{ grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 30px;}
+
+@media (max-width: 767px) {
+  .columns-3 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 30px;
+  }
+}

@@ -25,6 +25,7 @@ function pm_remove_all_styles() {
         'header-style',
         'footer-style',
         'article-style',
+        'listing-style'
     );
 
     foreach ($wp_styles->queue as $key => $handle) {
@@ -74,6 +75,12 @@ add_action('wp_enqueue_scripts', function() {
         get_stylesheet_directory_uri() . '/assets/scss/article.scss',
         array(),
         filemtime(get_stylesheet_directory() . '/assets/scss/article.scss')
+    );
+    wp_enqueue_style(
+        'listing-style',
+        get_stylesheet_directory_uri() . '/assets/scss/listing.scss',
+        array(),
+        filemtime(get_stylesheet_directory() . '/assets/scss/listing.scss')
     );
 }, 1000); // Run late
 
