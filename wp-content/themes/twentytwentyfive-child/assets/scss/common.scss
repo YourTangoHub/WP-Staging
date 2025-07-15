@@ -4,15 +4,52 @@
   --black: #000;
   --white: #fff;
   --gray: #666666;
-  --wp--preset--spacing--40: 1.3em;
-  --wp--preset--spacing--30: calc(var(--wp--style--block-gap, 1.4444em) / 2);
-  --wp--custom--root-padding: 5vw;
-  --wp--preset--font-size--xxs-text: 0.6667em;
   --color-text: #202020;
+  --color-text-contrast-high: #000000;
+  --color-background: #FFFFFF;
+  --color-text-contrast-AA: #767676;
+
+  --wp--preset--spacing--20: calc(var(--wp--style--block-gap, 1.4444em) / 4);
+  --wp--preset--spacing--30: calc(var(--wp--style--block-gap, 1.4444em) / 2);
+  --wp--preset--spacing--40: 1em;
+  --wp--preset--spacing--50: var(--wp--style--block-gap, 1.4444em);
+  --wp--preset--spacing--60: 1.75em;
+  --wp--preset--spacing--70: 2.5em;
+  --wp--preset--spacing--80: 3.75em;
+
+  --wp--preset--font-size--xxs-text: 0.6667em;
+  --wp--preset--font-size--xs-text: 0.7778em;
+  --wp--preset--font-size--sm-text: 0.8889em;
+  --wp--preset--font-size--md-text: 1em;
+  --wp--preset--font-size--lg-text: 1.1667em;
+  --wp--preset--font-size--small: 13px;
+  --wp--preset--font-size--medium: 20px;
+  --wp--preset--font-size--large: 36px;
+  --wp--preset--font-size--x-large: 42px;
+
   --wp--preset--font-size--sm-heading: 1.5556em;
+  --wp--preset--font-size--md-heading: 1.9444em;
+  --wp--preset--font-size--lg-heading: 2.4444em;
+  --wp--preset--font-size--xl-heading: 3.0556em;
+
+  --wp--preset--font-size--md-title: clamp(2.188rem, 1.391rem + 3.98vw, 5rem);
+  --wp--preset--font-size--lg-title: clamp(2.75rem, 0.697rem + 10.27vw, 10rem);
+
   --wp--preset--font-family--primary: Circular, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
   --wp--preset--font-family--secondary: Brandon, Avenir, 'Avenir Next LT Pro', Montserrat, Corbel, 'URW Gothic', source-sans-pro, sans-serif;
+
+  --wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);
+  --wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);
+  --wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);
+  --wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);
+  --wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);
+
+  --wp--custom--font-scale: clamp(1.125rem, 1.054rem + 0.35vw, 1.375rem);
+  --wp--custom--root-padding: 5vw;
+  --wp--custom--mid-size: calc(38 * var(--wp--custom--font-scale, 1rem));
+  --wp--custom--full-size: calc(var(--wp--style--global--wide-size, 54rem) + var(--wp--custom--root-padding, 5vw));
 }
+
 
 *, :after, :before {
     box-sizing: border-box;
@@ -87,12 +124,22 @@ body.logged-in.admin-bar #wpadminbar{ display:none; }
 a {
   text-decoration: none;
 }
+img {
+    max-inline-size: 100%;
+    block-size: auto;
+}
 
 body {
   padding: 0;
   margin: 0;
   font-family: var( --wp--preset--font-family--primary );
+  font-size: var(--wp--custom--font-scale);
   line-height: 1.44444444;
+}
+
+input, select, textarea {
+    border: .0625em solid var(--color-text-contrast-AA);
+    border-radius: .1875em;
 }
 
 *is-layout-constrained {
