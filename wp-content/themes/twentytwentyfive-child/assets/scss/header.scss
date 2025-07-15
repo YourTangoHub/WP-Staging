@@ -96,8 +96,8 @@ header {
           padding: 0;
 
           a {
-            font-size: 2em;
-            color: var(--black);
+            font-size: var(--wp--preset--font-size--sm-heading);
+            color: var(--color-text-contrast-high);
             text-transform: capitalize;
             font-family: var(--wp--preset--font-family--primary);
             font-weight: 400;
@@ -118,7 +118,7 @@ header {
       font-size: 0;
       &:hover{
         text-decoration: none;
-        color: var(--black);
+        color: var(--color-text-contrast-high);
       }
       &:after {
         content: "✕";
