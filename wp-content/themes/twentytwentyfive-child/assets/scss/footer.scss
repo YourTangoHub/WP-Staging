@@ -190,3 +190,70 @@ button {
   margin-left: 10px;
   word-break: normal;
 }
+
+
+.footer-recent-post {
+  padding-right: 3.75vw;
+  padding-left: 3.75vw;
+
+  h2 {
+    font-family: var(--wp--preset--font-family--secondary);
+    margin-top: var(--wp--preset--spacing--30);
+    margin-bottom: 0;
+    max-width: var(--wp--style--global--content-size);
+    margin-left: auto;
+    margin-right: auto;
+    font-size: var(--wp--preset--font-size--md-heading);
+  }
+
+  .footer-category-post {
+    max-width: var(--wp--style--global--content-size);
+    margin-left: auto;
+    margin-right: auto;
+
+    figure {
+      margin: 0;
+    }
+
+    .taxonomy-category {
+      font-family: var(--wp--preset--font-family--secondary);
+      margin-bottom: 0.5rem;
+
+      a {
+        color: var(--color-text-contrast-high);
+        font-weight: bolder;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .wp-block-post-date {
+      // Add styles if needed
+    }
+
+    h3 {
+      margin: 0;
+      font-size: var(--wp--preset--font-size--sm-heading);
+      line-height: calc(52 / 45);
+      font-weight: 500;
+    }
+
+    a {
+      color: var(--color-text-contrast-high);
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .wp-block-post-excerpt {
+      margin-block-start: calc(1.4444em / 2);
+
+      p {
+        margin: 0;
+      }
+    }
+  }
+}
