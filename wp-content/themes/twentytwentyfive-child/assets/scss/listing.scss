@@ -1,9 +1,9 @@
-.is-layout-constrained {
+/*.is-layout-constrained {
   > .post-list-view {
-    padding: 4em 15.5vw;
+    padding: 0 15.5vw;
   }
 }
-
+*/
 .post-list-view {
   ul {
     list-style: none;
@@ -15,6 +15,7 @@
 
       figure {
         margin: 0;
+        margin-bottom: var(--wp--preset--spacing--30);
       }
 
       .wp-block-columns-is-layout-flex {

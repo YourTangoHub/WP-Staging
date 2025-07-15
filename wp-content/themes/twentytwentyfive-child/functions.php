@@ -40,7 +40,8 @@ add_action('wp_print_styles', 'pm_remove_all_styles', 5); // Run early
 // -----------------------------
 // Enqueue styles
 // -----------------------------
-add_action('wp_enqueue_scripts', function() {
+add_action('wp_enqueue_scripts', function () {
+    // Load base styles (always needed)
     wp_enqueue_style(
         'twentytwentyfive-style',
         get_template_directory_uri() . '/style.css'
@@ -53,6 +54,7 @@ add_action('wp_enqueue_scripts', function() {
         wp_get_theme()->get('Version')
     );
 
+    // Load always-required styles
     wp_enqueue_style(
         'common-style',
         get_stylesheet_directory_uri() . '/assets/scss/common.scss',
@@ -71,25 +73,37 @@ add_action('wp_enqueue_scripts', function() {
         array(),
         filemtime(get_stylesheet_directory() . '/assets/scss/footer.scss')
     );
-    wp_enqueue_style(
-        'home-style',
-        get_stylesheet_directory_uri() . '/assets/scss/home.scss',
-        array(),
-        filemtime(get_stylesheet_directory() . '/assets/scss/home.scss')
-    );
-    wp_enqueue_style(
-        'article-style',
-        get_stylesheet_directory_uri() . '/assets/scss/article.scss',
-        array(),
-        filemtime(get_stylesheet_directory() . '/assets/scss/article.scss')
-    );
-    wp_enqueue_style(
-        'listing-style',
-        get_stylesheet_directory_uri() . '/assets/scss/listing.scss',
-        array(),
-        filemtime(get_stylesheet_directory() . '/assets/scss/listing.scss')
-    );
-}, 1000); // Run late
+
+    // Only load this style on the homepage
+    if (is_front_page() || is_home()) {
+        wp_enqueue_style(
+            'home-style',
+            get_stylesheet_directory_uri() . '/assets/scss/home.scss',
+            array(),
+            filemtime(get_stylesheet_directory() . '/assets/scss/home.scss')
+        );
+    }
+
+    // Load article page styles
+    if (is_single()) {
+        wp_enqueue_style(
+            'article-style',
+            get_stylesheet_directory_uri() . '/assets/scss/article.scss',
+            array(),
+            filemtime(get_stylesheet_directory() . '/assets/scss/article.scss')
+        );
+    }
+
+    // Load listing page styles (e.g., archives, categories)
+    if (is_archive() || is_category() || is_tag()) {
+        wp_enqueue_style(
+            'listing-style',
+            get_stylesheet_directory_uri() . '/assets/scss/listing.scss',
+            array(),
+            filemtime(get_stylesheet_directory() . '/assets/scss/listing.scss')
+        );
+    }
+}, 1000);
 
 // -----------------------------
 // Shortcode for "x time ago"
