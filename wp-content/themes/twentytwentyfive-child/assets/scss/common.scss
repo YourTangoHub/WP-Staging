@@ -9,10 +9,10 @@
   --color-background: #FFFFFF;
   --color-text-contrast-AA: #767676;
 
-  --wp--preset--spacing--20: calc(var(--wp--style--block-gap, 1.4444em) / 4);
-  --wp--preset--spacing--30: calc(var(--wp--style--block-gap, 1.4444em) / 2);
+  --wp--preset--spacing--20: calc(1.4444em / 4);
+  --wp--preset--spacing--30: calc(1.4444em / 2);
   --wp--preset--spacing--40: 1em;
-  --wp--preset--spacing--50: var(--wp--style--block-gap, 1.4444em);
+  --wp--preset--spacing--50: var(1.4444em);
   --wp--preset--spacing--60: 1.75em;
   --wp--preset--spacing--70: 2.5em;
   --wp--preset--spacing--80: 3.75em;
