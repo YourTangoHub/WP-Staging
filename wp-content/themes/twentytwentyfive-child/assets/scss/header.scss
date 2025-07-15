@@ -1,93 +1,207 @@
 header {
-  position: sticky;
-  top: 0px;
-  border-bottom: 1px solid var(--border-color);
-  background-color: var(--white);
-  .alignwide {
+  position: relative;
+  z-index: 1;
+
+  .brand {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    inline-size: 100%;
+    padding-block-start: var(--wp--preset--spacing--40, 1em);
+    padding-inline: max(
+      var(--wp--preset--spacing--30, 0.75em),
+      calc(var(--wp--custom--root-padding, 3.75vw) / 2)
+    );
   }
+
   .wp-block-site-title {
+    margin: 0;
+
     a {
       text-decoration: none;
-      color: var(--black);
+      color: var(--primary);
       font-size: 2rem;
     }
   }
+
   nav {
     button {
-      display: none;
-      border:0px;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      text-transform: uppercase;
+      color: var(--primary);
+      font-weight: bold;
       background-color: transparent;
+      border: none;
+      cursor: pointer;
 
-      svg{
-      	width: 40px;
-      	height: 40px;
+      &:hover {
+        text-decoration: underline;
+      }
+
+      svg {
+        width: 40px;
+        height: 40px;
       }
     }
+
     ul {
       list-style: none;
-      padding: 0px;
-      margin: 0px;
+      padding: 0;
+      margin: 0;
       display: flex;
       gap: 10px;
+
       li {
         padding: 1rem;
+
         a {
-          font-size: 14px;
-          font-family: arial;
+          font-size: 16px;
+          font-family: Arial, sans-serif;
           text-transform: uppercase;
           color: var(--primary);
           font-weight: bold;
+
           &:hover {
             text-decoration: underline;
           }
         }
       }
     }
+
+    .wp-block-navigation__responsive-container {
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100%;
+      margin-inline-start: auto;
+      background-color: var(--white);
+      padding: 22px 16px;
+      max-inline-size: 100%;
+      inline-size: 600px;
+      overflow: auto;
+      display: none;
+      animation: fade-in 0.4s 0.2s both, slide-in 0.4s 0.2s both;
+      overscroll-behavior-block: contain;
+      z-index: 999;
+
+      ul {
+        flex-wrap: wrap;
+        text-align: center;
+        gap: 0;
+
+        li {
+          flex: 0 0 100%;
+          font-size: var(--wp--preset--font-size--sm-heading);
+          padding: 0;
+
+          a {
+            font-size: 2em;
+            color: var(--black);
+            text-transform: capitalize;
+            font-family: var(--wp--preset--font-family--primary);
+            font-weight: 400;
+          }
+        }
+      }
+
+      button {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+      }
+    }
+  }
+
+  .wp-block-navigation__responsive-dialog {
+    button {
+      font-size: 0;
+      &:hover{
+        text-decoration: none;
+        color: var(--black);
+      }
+      &:after {
+        content: "✕";
+        font-size: 43px;
+      }
+    }
   }
 }
-.wp-site-blocks>div.is-layout-constrained{ position:sticky; top:0px; z-index:999; background-color:var(--white); }
 
+.has-modal-open {
+  header {
+    nav {
+      .wp-block-navigation__responsive-container {
+        display: block;
+      }
+    }
 
-@media (max-width: 767px) {
-  header nav button {
+    &:before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--color-text);
+      opacity: 0.35;
+      animation: fade-in 0.2s both;
+      z-index: 99;
+      display: block;
+    }
+  }
+}
+
+.wp-site-blocks > div.is-layout-constrained {
+  z-index: 999;
+  background-color: var(--white);
+}
+
+/*// Brand styles*/
+.brand__name,
+.brand__menu {
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: 0;
+}
+
+.brand__name {
+  font-size: 1.5em;
+  color: var(--primary);
+}
+
+.brand__logo {
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: 10%;
+
+  img {
     display: block;
+    margin: auto;
+    block-size: auto;
   }
+}
 
-  header nav .wp-block-navigation__responsive-container {
-    position: fixed;
-    top: 0;
-    right: 0;
-    height: 100%;
-    width: 80%; /* Adjust as needed */
-    background-color: var(--white);
-    padding: 1rem;
-    border-left: 1px solid var(--border-color);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+.brand__menu {
+  font-size: var(--wp--preset--font-size--xxs-text);
+  display: flex;
+  gap: var(--wp--preset--spacing--40, 1em);
+  justify-content: flex-end;
+  align-items: center;
+  color: var(--primary);
+  font-family: var(--wp--preset--font-family--secondary);
+  font-weight: 700;
+}
 
-    /* Animation styles */
-    transform: translateX(100%);
-    transition: transform 0.3s ease-in-out;
-    z-index: 999;
+/*// Keyframe animations*/
+@keyframes fade-in {
+  0% {
+    opacity: 0;
   }
+}
 
-  .has-modal-open header nav .wp-block-navigation__responsive-container {
-    transform: translateX(0%);
-  }
-
-  header nav .wp-block-navigation__responsive-container ul {
-    flex-wrap: wrap;
-  }
-
-  header nav .wp-block-navigation__responsive-container ul li {
-    flex: 0 0 100%;
-  }
-
-  header nav .wp-block-navigation__responsive-container button {
-    width: 100%;
-    display: flex;
-    justify-content: end;
+@keyframes slide-in {
+  0% {
+    transform: translate(var(--dialog-slide-in, 0));
   }
 }

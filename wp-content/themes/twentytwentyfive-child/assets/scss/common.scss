@@ -4,6 +4,18 @@
   --black: #000;
   --white: #fff;
   --gray: #666666;
+  --wp--preset--spacing--40: 1.3em;
+  --wp--preset--spacing--30: calc(var(--wp--style--block-gap, 1.4444em) / 2);
+  --wp--custom--root-padding: 5vw;
+  --wp--preset--font-size--xxs-text: 0.6667em;
+  --color-text: #202020;
+  --wp--preset--font-size--sm-heading: 1.5556em;
+  --wp--preset--font-family--primary: Circular, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+  --wp--preset--font-family--secondary: Brandon, Avenir, 'Avenir Next LT Pro', Montserrat, Corbel, 'URW Gothic', source-sans-pro, sans-serif;
+}
+
+*, :after, :before {
+    box-sizing: border-box;
 }
 
 @font-face {
@@ -79,10 +91,11 @@ a {
 body {
   padding: 0;
   margin: 0;
-  font-family: Circular, Brandon, sans-serif;
+  font-family: var( --wp--preset--font-family--primary );
+  line-height: 1.44444444;
 }
 
-.is-layout-constrained {
+*is-layout-constrained {
   > .alignwide {
     padding: 1em 2.5vw 0;
     margin: 0 auto;
