@@ -57,30 +57,30 @@ add_action('wp_enqueue_scripts', function () {
     // Load always-required styles
     wp_enqueue_style(
         'common-style',
-        get_stylesheet_directory_uri() . '/assets/scss/common.scss',
+        get_stylesheet_directory_uri() . '/assets/scss/common.css',
         array(),
-        filemtime(get_stylesheet_directory() . '/assets/scss/common.scss')
+        filemtime(get_stylesheet_directory() . '/assets/scss/common.css')
     );
     wp_enqueue_style(
         'header-style',
-        get_stylesheet_directory_uri() . '/assets/scss/header.scss',
+        get_stylesheet_directory_uri() . '/assets/scss/header.css',
         array(),
-        filemtime(get_stylesheet_directory() . '/assets/scss/header.scss')
+        filemtime(get_stylesheet_directory() . '/assets/scss/header.css')
     );
     wp_enqueue_style(
         'footer-style',
-        get_stylesheet_directory_uri() . '/assets/scss/footer.scss',
+        get_stylesheet_directory_uri() . '/assets/scss/footer.css',
         array(),
-        filemtime(get_stylesheet_directory() . '/assets/scss/footer.scss')
+        filemtime(get_stylesheet_directory() . '/assets/scss/footer.css')
     );
 
     // Only load this style on the homepage
     if (is_front_page() || is_home()) {
         wp_enqueue_style(
             'home-style',
-            get_stylesheet_directory_uri() . '/assets/scss/home.scss',
+            get_stylesheet_directory_uri() . '/assets/scss/home.css',
             array(),
-            filemtime(get_stylesheet_directory() . '/assets/scss/home.scss')
+            filemtime(get_stylesheet_directory() . '/assets/scss/home.css')
         );
     }
 
@@ -88,9 +88,9 @@ add_action('wp_enqueue_scripts', function () {
     if (is_single()) {
         wp_enqueue_style(
             'article-style',
-            get_stylesheet_directory_uri() . '/assets/scss/article.scss',
+            get_stylesheet_directory_uri() . '/assets/scss/article.css',
             array(),
-            filemtime(get_stylesheet_directory() . '/assets/scss/article.scss')
+            filemtime(get_stylesheet_directory() . '/assets/scss/article.css')
         );
     }
 
@@ -98,9 +98,9 @@ add_action('wp_enqueue_scripts', function () {
     if (is_archive() || is_category() || is_tag()) {
         wp_enqueue_style(
             'listing-style',
-            get_stylesheet_directory_uri() . '/assets/scss/listing.scss',
+            get_stylesheet_directory_uri() . '/assets/scss/listing.css',
             array(),
-            filemtime(get_stylesheet_directory() . '/assets/scss/listing.scss')
+            filemtime(get_stylesheet_directory() . '/assets/scss/listing.css')
         );
     }
 }, 1000);
