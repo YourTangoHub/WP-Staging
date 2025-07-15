@@ -1,0 +1,18 @@
+main .wp-block-template-part .alignwide{  max-width: var(--wp--style--global--wide-size); margin-left:auto; margin-right:auto; }
+
+.has-accent-color {
+    color: var(--primary);
+}
+.stagingworld-moon-phase{ align-items: center; display: flex; flex-wrap: wrap; gap: .5em; justify-content: center; }
+.site__content{ padding-block-start: var(--wp--preset--spacing--40, 1em); margin-block-start: var(--wp--preset--spacing--40, 1em); }
+.site__content article{padding-top: 1.6667em; padding-bottom: 2.7778em;}
+
+.current-date .is-content-justification-left{ display:flex; flex-wrap: wrap; gap: .5em; justify-content: center;  }
+.current-date .is-content-justification-left p{ margin:0px; font-size: var(--wp--preset--font-size--xs-text) ; font-family: var(--wp--preset--font-family--secondary); }
+.current-date h2{ flex-basis: 100%; font-size: var(--wp--preset--font-size--lg-title); font-weight: 300; text-align: center; font-family: var(--wp--preset--font-family--secondary); margin:0px; }
+
+.current-date-category-list{ max-width: var(--wp--style--global--content-size); margin-left: auto ; margin-right: auto ; margin-top: var(--wp--preset--spacing--30); }
+.current-date-category-list ul{ margin: 0px; padding: 0px; display: flex; gap: var(--wp--preset--spacing--20); justify-content: center; align-items: flex-start; flex-wrap: wrap; list-style: none; }
+.current-date-category-list ul li{ display:flex;  flex-grow: 1; flex-wrap: nowrap; justify-content: center; }
+.current-date-category-list ul li a{ font-style: normal;
+    font-weight: 500; font-family: var(--wp--preset--font-family--secondary) !important; font-size: var(--wp--preset--font-size--sm-text) !important; }

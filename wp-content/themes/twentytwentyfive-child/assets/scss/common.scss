@@ -141,6 +141,11 @@ input, select, textarea {
     border-radius: .1875em;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    line-height: calc(52 / 45);
+    font-weight: 500;
+}
+
 *is-layout-constrained {
   > .alignwide {
     padding: 1em 2.5vw 0;
