@@ -34,7 +34,8 @@ header {
       background-color: transparent;
       border: none;
       cursor: pointer;
-
+      padding: 0px;
+      margin: 0px;
       &:hover {
         text-decoration: underline;
       }
@@ -53,7 +54,7 @@ header {
       gap: 10px;
 
       li {
-        padding: 1rem;
+        padding: 0rem;
 
         a {
           font-size: 16px;
@@ -203,5 +204,57 @@ header {
 @keyframes slide-in {
   0% {
     transform: translate(var(--dialog-slide-in, 0));
+  }
+}
+
+.header__search {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  padding-block: var(--wp--preset--spacing--40, 1em);
+  padding-inline: inherit;
+  background-color: var(--color-background);
+  border: none;
+  border-bottom: 2px solid #E5E5E5;
+  z-index: 2;
+  display: none;
+
+  &.show-search {
+    display: block;
+  }
+
+  > div {
+    padding-right: 3.75vw;
+    padding-left: 3.75vw;
+  }
+
+  form {
+    max-width: var(--wp--style--global--content-size);
+    margin-left: auto;
+    margin-right: auto;
+
+    label {
+      display: none;
+    }
+
+    .wp-block-search__inside-wrapper {
+      display: flex;
+    }
+
+    input {
+      appearance: none;
+      border: 1px solid #949494;
+      flex-grow: 1;
+      margin-left: 0;
+      margin-right: 0;
+      min-width: 3rem;
+      padding: 8px;
+      text-decoration: unset;
+      font-size: var(--wp--preset--font-size--sm-text);
+      font-family: var(--wp--preset--font-family--secondary);
+      text-indent: var(--wp--preset--spacing--20, .375em);
+      font-weight: 600;
+      font-style: normal;
+    }
   }
 }

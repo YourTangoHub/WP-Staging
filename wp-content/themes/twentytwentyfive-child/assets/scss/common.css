@@ -146,6 +146,8 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 500;
 }
 
+figure a{ display:block; line-height: 0px; height: 100%;}
+
 *is-layout-constrained {
   > .alignwide {
     padding: 1em 2.5vw 0;
