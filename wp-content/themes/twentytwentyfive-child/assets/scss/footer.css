@@ -76,6 +76,7 @@ footer {
           margin: 0;
           font-size: 1em;
           color: var(--color-accent);
+          margin-bottom: 0.5em;
         }
       }
     }
