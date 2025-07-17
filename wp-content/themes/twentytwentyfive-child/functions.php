@@ -1,12 +1,12 @@
 <?php
 // -----------------------------
-// Selectively remove CSS & JS
+// Remove All Frontend Scripts (Except Allowed)
 // -----------------------------
 function pm_remove_all_scripts() {
-    global $wp_scripts;
+    if (is_admin() || is_preview()) return; // Prevent removal in admin/editor/preview
 
-    // Keep only selected script handles if needed
-    $allowed_scripts = array(); // Add script handles here if needed
+    global $wp_scripts;
+    $allowed_scripts = array(); // Add allowed script handles here
 
     foreach ($wp_scripts->queue as $key => $handle) {
         if (!in_array($handle, $allowed_scripts)) {
@@ -14,12 +14,15 @@ function pm_remove_all_scripts() {
         }
     }
 }
-add_action('wp_print_scripts', 'pm_remove_all_scripts', 5); // Run early
+add_action('wp_print_scripts', 'pm_remove_all_scripts', 5);
 
+// -----------------------------
+// Remove All Frontend Styles (Except Allowed)
+// -----------------------------
 function pm_remove_all_styles() {
-    global $wp_styles;
+    if (is_admin() || is_preview()) return; // Prevent removal in admin/editor/preview
 
-    // Keep only these style handles
+    global $wp_styles;
     $allowed_styles = array(
         'common-style',
         'header-style',
@@ -35,13 +38,13 @@ function pm_remove_all_styles() {
         }
     }
 }
-add_action('wp_print_styles', 'pm_remove_all_styles', 5); // Run early
+add_action('wp_print_styles', 'pm_remove_all_styles', 5);
 
 // -----------------------------
-// Enqueue styles
+// Enqueue Styles on Frontend
 // -----------------------------
 add_action('wp_enqueue_scripts', function () {
-    // Load base styles (always needed)
+    // Base styles
     wp_enqueue_style(
         'twentytwentyfive-style',
         get_template_directory_uri() . '/style.css'
@@ -54,19 +57,21 @@ add_action('wp_enqueue_scripts', function () {
         wp_get_theme()->get('Version')
     );
 
-    // Load always-required styles
+    // Common styles
     wp_enqueue_style(
         'common-style',
         get_stylesheet_directory_uri() . '/assets/scss/common.css',
         array(),
         filemtime(get_stylesheet_directory() . '/assets/scss/common.css')
     );
+
     wp_enqueue_style(
         'header-style',
         get_stylesheet_directory_uri() . '/assets/scss/header.css',
         array(),
         filemtime(get_stylesheet_directory() . '/assets/scss/header.css')
     );
+
     wp_enqueue_style(
         'footer-style',
         get_stylesheet_directory_uri() . '/assets/scss/footer.css',
@@ -74,8 +79,8 @@ add_action('wp_enqueue_scripts', function () {
         filemtime(get_stylesheet_directory() . '/assets/scss/footer.css')
     );
 
-    // Only load this style on the homepage
-    if (is_front_page() || is_home()) {
+    // Conditional page styles
+    if (is_front_page() || is_home() || is_preview()) {
         wp_enqueue_style(
             'home-style',
             get_stylesheet_directory_uri() . '/assets/scss/home.css',
@@ -84,8 +89,7 @@ add_action('wp_enqueue_scripts', function () {
         );
     }
 
-    // Load article page styles
-    if (is_single()) {
+    if (is_single() || is_preview()) {
         wp_enqueue_style(
             'article-style',
             get_stylesheet_directory_uri() . '/assets/scss/article.css',
@@ -94,8 +98,7 @@ add_action('wp_enqueue_scripts', function () {
         );
     }
 
-    // Load listing page styles (e.g., archives, categories)
-    if (is_archive() || is_category() || is_tag()) {
+    if (is_archive() || is_category() || is_tag() || is_preview()) {
         wp_enqueue_style(
             'listing-style',
             get_stylesheet_directory_uri() . '/assets/scss/listing.css',
@@ -106,7 +109,55 @@ add_action('wp_enqueue_scripts', function () {
 }, 1000);
 
 // -----------------------------
-// Shortcode for "x time ago"
+// Load Styles Inside Block Editor (FSE + Post Editor)
+// -----------------------------
+function pm_enqueue_block_editor_styles() {
+    wp_enqueue_style(
+        'common-style',
+        get_stylesheet_directory_uri() . '/assets/scss/common.css',
+        array(),
+        filemtime(get_stylesheet_directory() . '/assets/scss/common.css')
+    );
+
+    wp_enqueue_style(
+        'header-style',
+        get_stylesheet_directory_uri() . '/assets/scss/header.css',
+        array(),
+        filemtime(get_stylesheet_directory() . '/assets/scss/header.css')
+    );
+
+    wp_enqueue_style(
+        'footer-style',
+        get_stylesheet_directory_uri() . '/assets/scss/footer.css',
+        array(),
+        filemtime(get_stylesheet_directory() . '/assets/scss/footer.css')
+    );
+
+    wp_enqueue_style(
+        'home-style',
+        get_stylesheet_directory_uri() . '/assets/scss/home.css',
+        array(),
+        filemtime(get_stylesheet_directory() . '/assets/scss/home.css')
+    );
+
+    wp_enqueue_style(
+        'article-style',
+        get_stylesheet_directory_uri() . '/assets/scss/article.css',
+        array(),
+        filemtime(get_stylesheet_directory() . '/assets/scss/article.css')
+    );
+
+    wp_enqueue_style(
+        'listing-style',
+        get_stylesheet_directory_uri() . '/assets/scss/listing.css',
+        array(),
+        filemtime(get_stylesheet_directory() . '/assets/scss/listing.css')
+    );
+}
+add_action('enqueue_block_editor_assets', 'pm_enqueue_block_editor_styles');
+
+// -----------------------------
+// Shortcode: [relative_time]
 // -----------------------------
 function relative_post_time_shortcode() {
     return sprintf('%s ago', human_time_diff(get_the_time('U'), current_time('timestamp')));
@@ -114,7 +165,7 @@ function relative_post_time_shortcode() {
 add_shortcode('relative_time', 'relative_post_time_shortcode');
 
 // -----------------------------
-// Disable emoji scripts/styles
+// Disable Emoji Scripts/Styles
 // -----------------------------
 function disable_emojis() {
     remove_action('wp_head', 'print_emoji_detection_script', 7);
