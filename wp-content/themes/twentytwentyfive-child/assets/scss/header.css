@@ -21,7 +21,6 @@ header {
       text-decoration: none;
       color: var(--primary);
       width: 148.5px;
-      display: block;
       font-weight: 600;
       font-style: normal;
       letter-spacing: -0.5px;
@@ -63,7 +62,8 @@ header {
         padding: 0rem;
 
         a {
-          font-size: 16px;
+          font-size: inherit;
+          line-height: inherit;
           font-family: Arial, sans-serif;
           text-transform: uppercase;
           color: var(--primary);
@@ -175,6 +175,9 @@ header {
 .brand__name {
   font-size: 1.5em;
   color: var(--primary);
+  a{
+    display: none;
+  }
 }
 
 .brand__logo {
@@ -185,7 +188,7 @@ header {
   img {
     display: block;
     margin: auto;
-    block-size: auto;
+    max-inline-size: 3.25em;
   }
 }
 
@@ -286,4 +289,11 @@ header {
       display: block;
     }
   }
+}
+
+
+@media (min-width: 40em) {
+    .brand__name a {
+        display: inherit;
+    }
 }

@@ -96,7 +96,7 @@ main {
 
       figure {
         margin: 0;
-        margin-bottom: var(--wp--preset--spacing--20);
+        margin-bottom: var(--wp--preset--spacing--30);
       }
 
       .wp-block-columns-is-layout-flex {
@@ -307,6 +307,9 @@ main {
 
     figure {
       margin: 0;
+      img{
+        width: 100%;
+      }
     }
 
     h3 {
@@ -343,4 +346,17 @@ main {
 
 .article-big-heading2 {
   max-width: var(--wp--style--global--wide-size);
+}
+
+
+@media (max-width: 767px){
+  .homepage-cover-banner{
+    blockquote{
+      margin: 0px;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+    .columns-2, .columns-3{ grid-template-columns: 1fr; }
 }
