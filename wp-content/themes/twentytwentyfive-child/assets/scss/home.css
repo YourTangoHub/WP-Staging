@@ -78,8 +78,10 @@ main {
       a {
         font-style: normal;
         font-weight: 500;
-        font-family: var(--wp--preset--font-family--secondary) !important;
-        font-size: var(--wp--preset--font-size--sm-text) !important;
+        font-family: var(--wp--preset--font-family--secondary);
+        font-size: var(--wp--preset--font-size--sm-text);
+        color: var(--primary);
+        &:hover{ text-decoration:underline; }
       }
     }
   }

@@ -192,3 +192,34 @@ function show_day_moon_date() {
 }
 
 add_shortcode('current_day_moon_date', 'show_day_moon_date');
+
+
+// TOC
+function insert_table_of_contents($content) {
+    if (is_single() && get_post_meta(get_the_ID(), 'table_of_contents', true) === 'yes') {
+        ob_start(); ?>
+        <div class="toc">
+            <h3>Table of Contents</h3>
+            <ul>
+                <li><a href="#aries">Aries</a></li>
+                <li><a href="#taurus">Taurus</a></li>
+                <li><a href="#gemini">Gemini</a></li>
+                <li><a href="#cancer">Cancer</a></li>
+                <li><a href="#leo">Leo</a></li>
+                <li><a href="#virgo">Virgo</a></li>
+                <li><a href="#libra">Libra</a></li>
+                <li><a href="#scorpio">Scorpio</a></li>
+                <li><a href="#sagittarius">Sagittarius</a></li>
+                <li><a href="#capricorn">Capricorn</a></li>
+                <li><a href="#aquarius">Aquarius</a></li>
+                <li><a href="#pisces">Pisces</a></li>
+            </ul>
+        </div>
+        <?php
+        $toc = ob_get_clean();
+        return $toc . $content;
+    }
+    return $content;
+}
+add_filter('the_content', 'insert_table_of_contents');
+
