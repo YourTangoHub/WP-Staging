@@ -20,13 +20,19 @@ header {
     a {
       text-decoration: none;
       color: var(--primary);
-      font-size: 2rem;
+      width: 148.5px;
+      display: block;
+      font-weight: 600;
+      font-style: normal;
+      letter-spacing: -0.5px;
+      line-height: 34px;
     }
   }
 
   nav {
     button {
-      font-size: 16px;
+          line-height: inherit;
+    font-size: inherit;
       font-family: Arial, sans-serif;
       text-transform: uppercase;
       color: var(--primary);
