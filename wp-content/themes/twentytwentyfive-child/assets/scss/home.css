@@ -146,6 +146,7 @@ main {
 
 .post-details-info {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   gap: var(--wp--preset--spacing--30);
@@ -158,8 +159,8 @@ main {
     &:before {
       content: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M17.63%205.84C17.27%205.33%2016.67%205%2016%205L5%205.01C3.9%205.01%203%205.9%203%207v10c0%201.1.9%201.99%202%201.99L16%2019c.67%200%201.27-.33%201.63-.84L22%2012l-4.37-6.16zM16%2017H5V7h11l3.55%205L16%2017z%22%20fill%3D%22%23666666%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E");
       display: inline-block;
-      height: 1.1em;
-      width: 1.1em;
+      height: 1em;
+      width: 1em;
       margin-inline-end: 0.3em;
     }
 
