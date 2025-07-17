@@ -177,3 +177,18 @@ function disable_emojis() {
     remove_filter('wp_mail', 'wp_staticize_emoji_for_email');
 }
 add_action('init', 'disable_emojis');
+
+
+// Function to get moon phase symbol
+function get_moon_phase_icon() {
+    return '🌖';
+}
+
+function show_day_moon_date() {
+    $day = date('D');
+    $date = date('m-d-y');
+    $moon = get_moon_phase_icon();
+    return $day . ' ' . $moon . ' ' . $date;
+}
+
+add_shortcode('current_day_moon_date', 'show_day_moon_date');
