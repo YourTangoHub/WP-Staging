@@ -183,43 +183,98 @@ add_action('init', 'disable_emojis');
 function get_moon_phase_icon() {
     return '🌖';
 }
-
 function show_day_moon_date() {
     $day = date('D');
     $date = date('m-d-y');
     $moon = get_moon_phase_icon();
     return $day . ' ' . $moon . ' ' . $date;
 }
-
 add_shortcode('current_day_moon_date', 'show_day_moon_date');
 
 
-// TOC
-function insert_table_of_contents($content) {
-    if (is_single() && get_post_meta(get_the_ID(), 'table_of_contents', true) === 'yes') {
-        ob_start(); ?>
-        <div class="toc">
-            <h3>Table of Contents</h3>
-            <ul>
-                <li><a href="#aries">Aries</a></li>
-                <li><a href="#taurus">Taurus</a></li>
-                <li><a href="#gemini">Gemini</a></li>
-                <li><a href="#cancer">Cancer</a></li>
-                <li><a href="#leo">Leo</a></li>
-                <li><a href="#virgo">Virgo</a></li>
-                <li><a href="#libra">Libra</a></li>
-                <li><a href="#scorpio">Scorpio</a></li>
-                <li><a href="#sagittarius">Sagittarius</a></li>
-                <li><a href="#capricorn">Capricorn</a></li>
-                <li><a href="#aquarius">Aquarius</a></li>
-                <li><a href="#pisces">Pisces</a></li>
-            </ul>
-        </div>
-        <?php
-        $toc = ob_get_clean();
-        return $toc . $content;
+// Hide if no manual excerpt
+function hide_auto_generated_excerpt($excerpt) {
+    if (is_singular('post') && !has_excerpt()) {
+        return ''; // Hide excerpt only on single post page if it's auto-generated
     }
+    return $excerpt;
+}
+add_filter('get_the_excerpt', 'hide_auto_generated_excerpt');
+
+
+
+// TOC
+function toc_meta_box() {
+    add_meta_box(
+        'toc_meta_box_id',
+        'Table of Contents Descriptions',
+        'toc_meta_box_callback',
+        'post',
+        'normal',
+        'high'
+    );
+}
+add_action('add_meta_boxes', 'toc_meta_box');
+
+function toc_meta_box_callback($post) {
+    $zodiacs = [
+        'aries', 'taurus', 'gemini', 'cancer', 'leo', 'virgo',
+        'libra', 'scorpio', 'sagittarius', 'capricorn', 'aquarius', 'pisces'
+    ];
+
+    $stored = get_post_meta($post->ID, '_toc_descriptions', true);
+    if (!is_array($stored)) {
+        $stored = [];
+    }
+
+    foreach ($zodiacs as $sign) {
+        $value = isset($stored[$sign]) ? $stored[$sign] : '';
+        echo '<div style="margin-bottom:30px">';
+        echo '<h4 style="margin:0;padding:5px 0 20px; font-size:22px;">' . ucfirst($sign) . '</h4>';
+        wp_editor($value, 'toc_' . $sign, [
+            'textarea_name' => 'toc_descriptions[' . $sign . ']',
+            'textarea_rows' => 5,
+        ]);
+        echo '</div>';
+    }
+}
+
+function save_toc_descriptions($post_id) {
+    if (isset($_POST['toc_descriptions']) && is_array($_POST['toc_descriptions'])) {
+        update_post_meta($post_id, '_toc_descriptions', $_POST['toc_descriptions']);
+    }
+}
+add_action('save_post', 'save_toc_descriptions');
+
+function insert_table_of_contents($content) {
+    if (is_singular('post')) {
+        $descriptions = get_post_meta(get_the_ID(), '_toc_descriptions', true);
+
+        if (!is_array($descriptions)) return $content;
+
+        $zodiacs = [
+            'aries', 'taurus', 'gemini', 'cancer', 'leo', 'virgo',
+            'libra', 'scorpio', 'sagittarius', 'capricorn', 'aquarius', 'pisces'
+        ];
+
+        $toc = '<div class="custom-toc"><h3>Table of Contents</h3><ul>';
+        $output = '';
+        $hasToc = false;
+
+        foreach ($zodiacs as $sign) {
+            if (!empty($descriptions[$sign])) {
+                $toc .= '<li><a href="#' . esc_attr($sign) . '">' . ucfirst($sign) . '</a></li>';
+                $output .= '<h2 id="' . esc_attr($sign) . '">' . ucfirst($sign) . '</h2>';
+                $output .= wpautop(do_shortcode($descriptions[$sign]));
+                $hasToc = true;
+            }
+        }
+
+        $toc .= '</ul></div>';
+
+        return ($hasToc ? $toc : '') . $content . $output;
+    }
+
     return $content;
 }
 add_filter('the_content', 'insert_table_of_contents');
-
