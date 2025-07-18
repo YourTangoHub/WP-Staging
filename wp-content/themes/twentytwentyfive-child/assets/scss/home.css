@@ -81,6 +81,8 @@ main {
       flex-wrap: nowrap;
       justify-content: center;
 
+      h4{ margin:0px; text-align:center; }
+
       a {
         font-style: normal;
         font-weight: 500;
@@ -381,3 +383,7 @@ main {
 .zodiacs-list h3 {display: none;}
 .zodiacs-list .custom-toc li{ padding-top: var(--wp--preset--spacing--30); padding-bottom: var(--wp--preset--spacing--30); padding-left: var(--wp--preset--spacing--30); padding-right: var(--wp--preset--spacing--30); flex-basis: 8em;     border-radius: .5em;
     text-decoration: none; border: 1px solid transparent; cursor: pointer; display: block;}
+
+.heroscope, .tarotscope{ position:relative; }
+.heroscope:after, .heroscope:before{ content:"✨"; }
+.tarotscope:after, .tarotscope:before{ content:"🌙"; }

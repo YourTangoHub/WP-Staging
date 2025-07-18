@@ -227,21 +227,12 @@ function toc_meta_box_callback($post) {
         $stored = [];
     }
 
-    // Title Field
-    $toc_subtitle = get_post_meta($post->ID, '_toc_subtitle', true);
-    echo '<p><strong>Sub Title</strong></p>';
-    echo '<input type="text" name="toc_subtitle" value="' . esc_attr($toc_subtitle) . '" style="width:100%; margin-bottom: 30px;"  />';
-
     // Zodiac Fields
     foreach ($zodiacs as $sign) {
-        $text_input = isset($stored[$sign . '_title']) ? $stored[$sign . '_title'] : '';
         $editor_value = isset($stored[$sign]) ? $stored[$sign] : '';
 
         echo '<div style="margin-bottom:30px">';
         echo '<h4 style="margin:0;padding:5px 0 10px; font-size:20px;">' . ucfirst($sign) . '</h4>';
-        
-        // Input field
-        echo '<input type="text" name="toc_descriptions[' . $sign . '_title]" value="' . esc_attr($text_input) . '" style="width:100%; margin-bottom:10px;" placeholder="Date of ' . ucfirst($sign) . '" />';
 
         // Editor
         wp_editor($editor_value, 'toc_' . $sign, [
@@ -254,13 +245,9 @@ function toc_meta_box_callback($post) {
 }
 
 
+
 function save_toc_descriptions($post_id) {
     // Save TOC descriptions
-    if (isset($_POST['toc_descriptions']) && is_array($_POST['toc_descriptions'])) {
-        update_post_meta($post_id, '_toc_descriptions', $_POST['toc_descriptions']);
-    }
-
-    // ✅ Save TOC subtitle
     if (isset($_POST['toc_subtitle'])) {
         update_post_meta($post_id, '_toc_subtitle', sanitize_text_field($_POST['toc_subtitle']));
     }
@@ -337,16 +324,31 @@ function zodiac_toc_shortcode($atts) {
         'pisces' => '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 419.96 553.22"><path d="M418.42,243.33c-40.11,1.55-80.39,2.81-120.74,3.81,6.76-84.03,44.82-163.77,104.71-217.32L375.73,0c-68.42,61.18-111.54,152.42-118.22,248.04-37.14,.75-74.31,1.26-111.45,1.55C139.74,153.41,96.52,61.51,27.73,0L1.07,29.82c60.52,54.12,98.75,134.99,104.91,220-35.29,.11-70.51,0-105.62-.3l-.36,40c26.14,.23,52.34,.35,78.59,.35,9.29,0,18.6-.04,27.9-.07-1.79,39.9-10.36,79.81-25.56,118.87-16.8,43.16-40.76,83.02-71.23,118.49l30.34,26.06c33.42-38.9,59.71-82.66,78.16-130.04,17.05-43.8,26.54-88.67,28.32-133.6,36.77-.28,73.57-.78,110.35-1.52,1.63,45.44,11.14,90.82,28.38,135.12,18.44,47.38,44.74,91.14,78.16,130.04l30.34-26.06c-30.46-35.46-54.43-75.33-71.22-118.49-15.54-39.92-24.13-80.72-25.66-121.5,41.14-1.01,82.2-2.29,123.09-3.87l-1.54-39.97Z"></path></svg>'
     ];
 
+    $zodiac_dates = [
+        'aries' => 'Mar 21 – Apr 19',
+        'taurus' => 'Apr 20 – May 20',
+        'gemini' => 'May 21 – Jun 20',
+        'cancer' => 'Jun 21 – Jul 22',
+        'leo' => 'Jul 23 – Aug 22',
+        'virgo' => 'Aug 23 – Sep 22',
+        'libra' => 'Sep 23 – Oct 22',
+        'scorpio' => 'Oct 23 – Nov 21',
+        'sagittarius' => 'Nov 22 – Dec 21',
+        'capricorn' => 'Dec 22 – Jan 19',
+        'aquarius' => 'Jan 20 – Feb 18',
+        'pisces' => 'Feb 19 – Mar 20'
+    ];
+
     $toc = '<div class="custom-toc"><ul>';
     $hasToc = false;
 
     foreach ($zodiac_icons as $sign => $icon) {
        
         $toc_descriptions = get_post_meta($post_id, '_toc_descriptions', true);
-
+        $date = $zodiac_dates[$sign];
        $aries_title = isset($toc_descriptions[$sign . '_title']) ? $toc_descriptions[$sign . '_title'] : '';
 
-        $toc .= '<li><a href="' . esc_url($post_link) . '#' . esc_attr($sign) . '">' . $icon . ' ' . ucfirst($sign)  . $aries_title . '</a>  </li>';
+        $toc .= '<li><a href="' . esc_url($post_link) . '#' . esc_attr($sign) . '">' . $icon . ' ' . ucfirst($sign)  . $aries_title . ' <span class="zodiac-date">(' . $date . ')</span></a>  </li>';
         $hasToc = true;
     }
 
