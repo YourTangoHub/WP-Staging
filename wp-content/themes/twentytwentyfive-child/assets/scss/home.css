@@ -373,3 +373,15 @@ main {
 @media (max-width: 600px) {
     .columns-2, .columns-3{ grid-template-columns: 1fr; }
 }
+
+.zodiacs-list{  }
+.zodiacs-list{  }
+.zodiacs-list ul{ list-style:none; padding:0px; margin:0px; list-style:none; display: flex; gap: var(--wp--preset--spacing--40); justify-content: center;
+    flex-wrap: wrap; align-items: center; }
+.zodiacs-list h3 {display: none;}
+.zodiacs-list .custom-toc li{    padding-top: var(--wp--preset--spacing--30);
+    padding-bottom: var(--wp--preset--spacing--30);
+    padding-left: var(--wp--preset--spacing--30);
+    padding-right: var(--wp--preset--spacing--30);     flex-basis: 8em;     border-radius: .5em;
+    text-decoration: none;     border: 1px solid transparent;     cursor: pointer;
+    display: block;}

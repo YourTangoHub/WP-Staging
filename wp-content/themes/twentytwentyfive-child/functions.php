@@ -227,24 +227,46 @@ function toc_meta_box_callback($post) {
         $stored = [];
     }
 
+    // Title Field
+    $toc_subtitle = get_post_meta($post->ID, '_toc_subtitle', true);
+    echo '<p><strong>Sub Title</strong></p>';
+    echo '<input type="text" name="toc_subtitle" value="' . esc_attr($toc_subtitle) . '" style="width:100%; margin-bottom: 30px;"  />';
+
+    // Zodiac Fields
     foreach ($zodiacs as $sign) {
-        $value = isset($stored[$sign]) ? $stored[$sign] : '';
+        $text_input = isset($stored[$sign . '_title']) ? $stored[$sign . '_title'] : '';
+        $editor_value = isset($stored[$sign]) ? $stored[$sign] : '';
+
         echo '<div style="margin-bottom:30px">';
-        echo '<h4 style="margin:0;padding:5px 0 20px; font-size:22px;">' . ucfirst($sign) . '</h4>';
-        wp_editor($value, 'toc_' . $sign, [
+        echo '<h4 style="margin:0;padding:5px 0 10px; font-size:20px;">' . ucfirst($sign) . '</h4>';
+        
+        // Input field
+        echo '<input type="text" name="toc_descriptions[' . $sign . '_title]" value="' . esc_attr($text_input) . '" style="width:100%; margin-bottom:10px;" placeholder="Date of ' . ucfirst($sign) . '" />';
+
+        // Editor
+        wp_editor($editor_value, 'toc_' . $sign, [
             'textarea_name' => 'toc_descriptions[' . $sign . ']',
             'textarea_rows' => 5,
         ]);
+
         echo '</div>';
     }
 }
 
+
 function save_toc_descriptions($post_id) {
+    // Save TOC descriptions
     if (isset($_POST['toc_descriptions']) && is_array($_POST['toc_descriptions'])) {
         update_post_meta($post_id, '_toc_descriptions', $_POST['toc_descriptions']);
     }
+
+    // ✅ Save TOC subtitle
+    if (isset($_POST['toc_subtitle'])) {
+        update_post_meta($post_id, '_toc_subtitle', sanitize_text_field($_POST['toc_subtitle']));
+    }
 }
 add_action('save_post', 'save_toc_descriptions');
+
 
 function insert_table_of_contents($content) {
     if (is_singular('post')) {
@@ -290,10 +312,12 @@ function zodiac_toc_shortcode($atts) {
         'post_status'    => 'publish'
     );
     $post_link = null;
+    $post_id=null;
     $latest_post = new WP_Query($args);
 
     if ($latest_post->have_posts()) {
         $latest_post->the_post();
+        $post_id = get_the_ID();
         $post_link = get_permalink();
         wp_reset_postdata();
     }
@@ -317,7 +341,12 @@ function zodiac_toc_shortcode($atts) {
     $hasToc = false;
 
     foreach ($zodiac_icons as $sign => $icon) {
-        $toc .= '<li><a href="' . esc_url($post_link) . '#' . esc_attr($sign) . '">' . $icon . ' ' . ucfirst($sign) . '</a></li>';
+       
+        $toc_descriptions = get_post_meta($post_id, '_toc_descriptions', true);
+
+       $aries_title = isset($toc_descriptions[$sign . '_title']) ? $toc_descriptions[$sign . '_title'] : '';
+
+        $toc .= '<li><a href="' . esc_url($post_link) . '#' . esc_attr($sign) . '">' . $icon . ' ' . ucfirst($sign)  . $aries_title . '</a>  </li>';
         $hasToc = true;
     }
 
