@@ -88,6 +88,8 @@ footer {
       text-align: center;
       row-gap: var(--wp--preset--spacing--50, 1.4375em);
 
+      h2.Footer-title{ font-size: var(--wp--preset--font-size--xxs-text); text-transform: uppercase; margin:0px; }
+
       button {
         display: none;
       }
@@ -221,7 +223,7 @@ button {
       margin-bottom: 0.5rem;
 
       a {
-        color: var(--color-text-contrast-high);
+        color: var(--color-text-contrast-high) !important;
         font-weight: bolder;
 
         &:hover {
@@ -256,3 +258,8 @@ button {
     }
   }
 }
+
+footer .footer__layout .custom-toc ul { list-style-type: none; display: flex; flex-wrap: wrap; gap: .5em; list-style: none; margin-block-start: 1.5em; padding: 0;     margin-block-start: calc(1.4444em / 2);}
+footer .footer__layout .custom-toc ul li{ border: 1px solid; padding: .25em .5em;     font-size: var(--wp--custom--font-scale); }
+footer .footer__layout .custom-toc ul li a{ color:currentColor;  }
+footer .footer__layout .custom-toc ul li a svg{fill: currentColor; height: 1em; margin-inline-end: .5em; vertical-align: middle;}
