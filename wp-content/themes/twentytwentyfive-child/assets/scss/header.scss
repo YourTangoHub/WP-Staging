@@ -452,3 +452,77 @@ header {
     }
   }
 }
+
+.header__menu.menu-open{
+    display: flex;
+  }
+
+.brand__menu {
+  button.menu-toggle {
+    line-height: inherit;
+    font-size: inherit;
+    font-family: Arial, sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    color: var(--primary);
+
+    svg {
+      display: none;
+    }
+
+    span {
+      display: inline;
+    }
+  }
+
+  nav {
+    display: block;
+  }
+}
+
+.wp-block-site-logo {
+  display: inline;
+  grid-column-start: auto;
+
+  img {
+    display: inline;
+    margin: 0;
+    max-inline-size: none;
+  }
+}
+
+@media (max-width: 639px) {
+  .brand__menu {
+    nav {
+      display: none;
+    }
+
+    button.menu-toggle {
+      span {
+        display: none;
+      }
+
+      svg {
+        display: block;
+        inline-size: 2.75em;
+        block-size: 2.75em;
+      }
+    }
+  }
+
+  .wp-block-site-logo {
+    grid-column-start: 2;
+    display: block;
+
+    img {
+      display: block;
+      margin: auto;
+      max-inline-size: 3.25em;
+    }
+  }
+}
