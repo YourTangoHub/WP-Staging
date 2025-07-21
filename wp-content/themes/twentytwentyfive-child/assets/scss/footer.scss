@@ -262,8 +262,38 @@ button {
   }
 }
 
-footer .footer__layout .custom-toc ul { list-style-type: none; display: flex; flex-wrap: wrap; gap: .5em; list-style: none; margin-block-start: 1.5em; padding: 0;     margin-block-start: calc(1.4444em / 2);}
-footer .footer__layout .custom-toc ul li{ border: 1px solid; padding: .25em .5em;     font-size: var(--wp--custom--font-scale); }
-footer .footer__layout .custom-toc ul li a{ color:currentColor;  }
-footer .footer__layout .custom-toc ul li a svg{fill: currentColor; height: 1em; margin-inline-end: .5em; vertical-align: middle;}
-footer .footer__layout .custom-toc ul .zodiac-date{ display:none; }
+footer {
+  .footer__layout {
+    .custom-toc {
+      ul {
+        list-style-type: none;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5em;
+        margin-block-start: calc(1.4444em / 2);
+        padding: 0;
+
+        li {
+          border: 1px solid;
+          padding: 0.25em 0.5em;
+          font-size: var(--wp--custom--font-scale);
+
+          a {
+            color: currentColor;
+
+            svg {
+              fill: currentColor;
+              height: 1em;
+              margin-inline-end: 0.5em;
+              vertical-align: middle;
+            }
+          }
+        }
+
+        .zodiac-date {
+          display: none;
+        }
+      }
+    }
+  }
+}

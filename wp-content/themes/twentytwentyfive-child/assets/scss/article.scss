@@ -1,3 +1,8 @@
+.site__content {
+  padding-block-start: var(--wp--preset--spacing--40, 1em);
+  margin-block-start: var(--wp--preset--spacing--40, 1em);
+}
+
 .is-layout-constrained {
   > .alignfull.post-details-view,
   > .alignwide.related-articles {
