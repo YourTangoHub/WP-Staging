@@ -181,15 +181,55 @@ add_action('init', 'disable_emojis');
 
 // Function to get moon phase symbol
 function get_moon_phase_icon() {
-    return '🌖';
+    $timestamp = time();
+    $synodic_month = 29.53058867;
+    $known_new_moon = strtotime('2000-01-06 18:14:00');
+    $days_since_new = ($timestamp - $known_new_moon) / 86400;
+    $current_phase = fmod($days_since_new, $synodic_month);
+    if ($current_phase < 1.84566) return '🌑';
+    elseif ($current_phase < 5.53699) return '🌒';
+    elseif ($current_phase < 9.22831) return '🌓';
+    elseif ($current_phase < 12.91963) return '🌔';
+    elseif ($current_phase < 16.61096) return '🌕';
+    elseif ($current_phase < 20.30228) return '🌖';
+    elseif ($current_phase < 23.99361) return '🌗';
+    elseif ($current_phase < 27.68493) return '🌘';
+    else return '🌑';
 }
 function show_day_moon_date() {
-    $day = date('D');
+    $day  = date('D');
     $date = date('m-d-y');
     $moon = get_moon_phase_icon();
-    return $day . ' ' . $moon . ' ' . $date;
+    return esc_html("$day $moon $date");
 }
 add_shortcode('current_day_moon_date', 'show_day_moon_date');
+
+// Function to calculate days until next full moon
+function get_days_until_full_moon() {
+    $timestamp = time();
+    $synodic_month = 29.53058867;
+    $known_new_moon = strtotime('2000-01-06 18:14:00');
+
+    $days_since_new = ($timestamp - $known_new_moon) / 86400;
+    $current_phase = fmod($days_since_new, $synodic_month);
+
+    $full_moon_day = 14.765;
+
+    if ($current_phase <= $full_moon_day) {
+        $days_until_full = $full_moon_day - $current_phase;
+    } else {
+        $days_until_full = $synodic_month - $current_phase + $full_moon_day;
+    }
+
+    return round($days_until_full);
+}
+
+function show_full_moon_countdown() {
+    $days = get_days_until_full_moon();
+    return esc_html("Full moon in $days days");
+}
+
+add_shortcode('full_moon_countdown', 'show_full_moon_countdown');
 
 
 // Hide if no manual excerpt
@@ -200,7 +240,6 @@ function hide_auto_generated_excerpt($excerpt) {
     return $excerpt;
 }
 add_filter('get_the_excerpt', 'hide_auto_generated_excerpt');
-
 
 
 // TOC
@@ -325,30 +364,35 @@ function zodiac_toc_shortcode($atts) {
     ];
 
     $zodiac_dates = [
-        'aries' => 'Mar 21 – Apr 19',
-        'taurus' => 'Apr 20 – May 20',
-        'gemini' => 'May 21 – Jun 20',
-        'cancer' => 'Jun 21 – Jul 22',
-        'leo' => 'Jul 23 – Aug 22',
-        'virgo' => 'Aug 23 – Sep 22',
-        'libra' => 'Sep 23 – Oct 22',
-        'scorpio' => 'Oct 23 – Nov 21',
-        'sagittarius' => 'Nov 22 – Dec 21',
-        'capricorn' => 'Dec 22 – Jan 19',
-        'aquarius' => 'Jan 20 – Feb 18',
-        'pisces' => 'Feb 19 – Mar 20'
+        'aries' => 'Mar 21—Apr 19',
+        'taurus' => 'Apr 20—May 20',
+        'gemini' => 'May 21—Jun 20',
+        'cancer' => 'Jun 21—Jul 22',
+        'leo' => 'Jul 23—Aug 22',
+        'virgo' => 'Aug 23—Sep 22',
+        'libra' => 'Sep 23—Oct 22',
+        'scorpio' => 'Oct 23—Nov 21',
+        'sagittarius' => 'Nov 22—Dec 21',
+        'capricorn' => 'Dec 22—Jan 19',
+        'aquarius' => 'Jan 20—Feb 18',
+        'pisces' => 'Feb 19—Mar 20'
     ];
 
     $toc = '<div class="custom-toc"><ul>';
     $hasToc = false;
 
     foreach ($zodiac_icons as $sign => $icon) {
-       
         $toc_descriptions = get_post_meta($post_id, '_toc_descriptions', true);
         $date = $zodiac_dates[$sign];
-       $aries_title = isset($toc_descriptions[$sign . '_title']) ? $toc_descriptions[$sign . '_title'] : '';
+        $title = ucfirst($sign);
+        $aries_title = isset($toc_descriptions[$sign . '_title']) ? $toc_descriptions[$sign . '_title'] : '';
 
-        $toc .= '<li><a href="' . esc_url($post_link) . '#' . esc_attr($sign) . '">' . $icon . ' ' . ucfirst($sign)  . $aries_title . ' <span class="zodiac-date">(' . $date . ')</span></a>  </li>';
+        $toc .= '<li><a href="' . esc_url($post_link) . '#' . esc_attr($sign) . '">'
+             . $icon . ' '
+             . '<span class="zodiac-title">' . esc_html($title . ' ' . $aries_title) . '</span> '
+             . '<span class="zodiac-date">' . esc_html($date) . '</span>'
+             . '</a></li>';
+
         $hasToc = true;
     }
 

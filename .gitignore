@@ -26,3 +26,9 @@ web.config
 
 # Ignore content that should be managed outside Git
 wp-content/uploads/
+
+# Ignore PHP dependency manager files and folders
+vendor/
+compile-scss.php
+composer.json
+composer.lock

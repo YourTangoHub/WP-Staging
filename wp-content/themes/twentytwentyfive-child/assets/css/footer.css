@@ -245,6 +245,6 @@ footer .footer__layout .custom-toc ul li a svg {
   vertical-align: middle;
 }
 
-footer .footer__layout .custom-toc ul span {
+footer .footer__layout .custom-toc ul .zodiac-date {
   display: none;
 }
