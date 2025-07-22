@@ -200,8 +200,8 @@ function get_moon_phase_icon() {
 
 // Original shortcode: "Tue 🌘 07-22-25"
 function show_day_moon_date() {
-    $day  = date('D');          // Short day name
-    $date = date('m-d-y');      // Numeric format
+    $day  = date('D');
+    $date = date('m-d-y');
     $moon = get_moon_phase_icon();
     return esc_html("$day $moon $date");
 }
@@ -209,8 +209,8 @@ add_shortcode('current_day_moon_date', 'show_day_moon_date');
 
 // New shortcode: "Tuesday 🌘 Jul 22, 2025"
 function show_full_day_moon_date() {
-    $day  = date('l');          // Full day name
-    $date = date('M d, Y');     // Month name format
+    $day  = date('l');
+    $date = date('M d, Y');
     $moon = get_moon_phase_icon();
     return esc_html("$day $moon $date");
 }
@@ -461,3 +461,62 @@ function author_social_links_shortcode($atts) {
 add_shortcode('author_social_links', 'author_social_links_shortcode');
 
 
+
+
+
+
+// Rishabh
+function add_custom_avatar_url_field($user) {
+    $avatar_url = get_user_meta($user->ID, 'custom_user_avatar', true);
+    ?>
+    <h3>User Photo</h3>
+    <table class="form-table">
+        <tr>
+            <th><label for="custom_user_avatar">Image URL</label></th>
+            <td>
+                <input type="text" name="custom_user_avatar" id="custom_user_avatar" value="<?php echo esc_attr($avatar_url); ?>" class="regular-text" />
+                <p class="description">Enter the full URL of the user photo.</p>
+                <?php if ($avatar_url): ?>
+                    <p><strong>Preview:</strong><br>
+                    <img src="<?php echo esc_url($avatar_url); ?>" style="max-width:100px; height:auto;"></p>
+                <?php endif; ?>
+            </td>
+        </tr>
+    </table>
+    <?php
+}
+add_action('show_user_profile', 'add_custom_avatar_url_field');
+add_action('edit_user_profile', 'add_custom_avatar_url_field');
+
+function save_custom_avatar_url_field($user_id) {
+    if (current_user_can('edit_user', $user_id)) {
+        if (isset($_POST['custom_user_avatar'])) {
+            update_user_meta($user_id, 'custom_user_avatar', esc_url_raw($_POST['custom_user_avatar']));
+        }
+    }
+}
+add_action('personal_options_update', 'save_custom_avatar_url_field');
+add_action('edit_user_profile_update', 'save_custom_avatar_url_field');
+
+
+function custom_user_avatar($avatar, $id_or_email) {
+    $user = false;
+
+    if (is_numeric($id_or_email)) {
+        $user = get_user_by('id', $id_or_email);
+    } elseif (is_object($id_or_email) && !empty($id_or_email->user_id)) {
+        $user = get_user_by('id', $id_or_email->user_id);
+    } elseif (is_string($id_or_email)) {
+        $user = get_user_by('email', $id_or_email);
+    }
+
+    if ($user) {
+        $custom_avatar = get_user_meta($user->ID, 'custom_user_avatar', true);
+        if ($custom_avatar) {
+            return "<img alt='' src='" . esc_url($custom_avatar) . "' class='avatar avatar-96 photo' height='96' width='96'>";
+        }
+    }
+
+    return $avatar;
+}
+add_filter('get_avatar', 'custom_user_avatar', 10, 5);
