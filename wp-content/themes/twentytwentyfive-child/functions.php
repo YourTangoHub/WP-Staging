@@ -436,3 +436,24 @@ function author_social_links_shortcode($atts) {
     return $output;
 }
 add_shortcode('author_social_links', 'author_social_links_shortcode');
+
+
+
+
+function exclude_current_post_from_query_loop_block( $block_content, $block ) {
+    if (
+        isset( $block['blockName'] ) &&
+        $block['blockName'] === 'core/query' &&
+        is_single() &&
+        ! empty( $block['attrs']['query'] )
+    ) {
+        // Inject current post ID to the 'exclude' parameter
+        $block['attrs']['query']['exclude'][] = get_the_ID();
+
+        // Re-render the block with the updated attributes
+        $block_content = render_block( $block );
+    }
+
+    return $block_content;
+}
+add_filter( 'render_block', 'exclude_current_post_from_query_loop_block', 10, 2 );
