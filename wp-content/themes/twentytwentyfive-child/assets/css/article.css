@@ -379,3 +379,82 @@ main .alignwide {
   flex-grow: 2;
   gap: var(--wp--preset--spacing--40);
 }
+
+/*world-card-deck*/
+.world-card-deck h2 {
+  max-width: var(--wp--style--global--content-size);
+  margin-left: auto;
+  margin-right: auto;
+  font-family: var(--wp--preset--font-family--secondary);
+  font-size: var(--wp--preset--font-size--lg-heading);
+  color: var(--primary);
+  margin-block-start: 1.4444em;
+  margin-block-end: 0;
+  text-align: center;
+}
+.world-card-deck figure {
+  max-width: var(--wp--style--global--content-size);
+  margin-left: auto;
+  margin-right: auto;
+  margin-block-start: 1.4444em;
+  margin-block-end: 0;
+}
+.world-card-deck figure img {
+  display: block;
+  height: auto;
+  width: 100%;
+}
+.world-card-deck p {
+  max-width: var(--wp--style--global--content-size);
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-block-start: 1.4444em;
+  margin-block-end: 0;
+}
+.world-card-deck p strong {
+  font-weight: bolder;
+}
+.world-card-deck p a {
+  text-decoration: underline;
+  color: currentColor;
+  text-decoration-color: rgba(var(--color-text-decoration-rgb, 0, 0, 0), 0.3);
+}
+.world-card-deck p a:hover {
+  text-decoration-color: currentColor;
+}
+.world-card-deck-btn {
+  max-width: var(--wp--style--global--content-size);
+  margin-left: auto;
+  margin-right: auto;
+  margin-block-start: 1.4444em;
+  margin-block-end: 0;
+}
+.world-card-deck-btn > div {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.4444em;
+}
+.world-card-deck-btn .wp-block-button {
+  display: inline-block;
+  margin: 0;
+}
+.world-card-deck-btn .wp-block-button a {
+  background-color: #32373c;
+  border-radius: 999px;
+  border: 0.125em solid transparent;
+  color: #fff;
+  padding: var(--wp--preset--spacing--20, 0.375em) 1.44em;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  word-break: break-word;
+}
+.world-card-deck-btn .wp-block-button.dark-btn a {
+  background-color: var(--color-text-contrast-high);
+}
+.world-card-deck-btn .wp-block-button.primary-btn a {
+  background-color: var(--primary);
+}
+
+/*world-card-deck*/
