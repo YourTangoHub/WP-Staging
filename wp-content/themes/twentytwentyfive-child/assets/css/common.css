@@ -163,5 +163,5 @@ figure a {
 
 .columns-3 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.4444em;
+  gap: 1em;
 }

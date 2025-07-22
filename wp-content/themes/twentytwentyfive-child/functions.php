@@ -474,3 +474,38 @@ function exclude_current_post_in_secondary_queries($query) {
     }
 }
 add_action('pre_get_posts', 'exclude_current_post_in_secondary_queries');
+
+
+function custom_user_profile_picture_field($user) {
+    ?>
+    <h3>Custom Profile Picture</h3>
+    <table class="form-table">
+        <tr>
+            <th><label for="custom_profile_picture">Upload Image</label></th>
+            <td>
+                <input type="file" name="custom_profile_picture" id="custom_profile_picture"><br>
+                <?php 
+                    $profile_image = get_user_meta($user->ID, 'custom_profile_picture', true);
+                    if ($profile_image) {
+                        echo '<img src="' . esc_url($profile_image) . '" style="max-width:100px;">';
+                    }
+                ?>
+            </td>
+        </tr>
+    </table>
+    <?php
+}
+add_action('show_user_profile', 'custom_user_profile_picture_field');
+add_action('edit_user_profile', 'custom_user_profile_picture_field');
+ 
+function save_custom_user_profile_picture($user_id) {
+    if (!empty($_FILES['custom_profile_picture']['name'])) {
+        $uploaded = media_handle_upload('custom_profile_picture', 0);
+        if (!is_wp_error($uploaded)) {
+            $url = wp_get_attachment_url($uploaded);
+            update_user_meta($user_id, 'custom_profile_picture', $url);
+        }
+    }
+}
+add_action('personal_options_update', 'save_custom_user_profile_picture');
+add_action('edit_user_profile_update', 'save_custom_user_profile_picture');
