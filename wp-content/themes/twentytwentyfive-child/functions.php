@@ -186,6 +186,7 @@ function get_moon_phase_icon() {
     $known_new_moon = strtotime('2000-01-06 18:14:00');
     $days_since_new = ($timestamp - $known_new_moon) / 86400;
     $current_phase = fmod($days_since_new, $synodic_month);
+
     if ($current_phase < 1.84566) return '🌑';
     elseif ($current_phase < 5.53699) return '🌒';
     elseif ($current_phase < 9.22831) return '🌓';
@@ -196,13 +197,25 @@ function get_moon_phase_icon() {
     elseif ($current_phase < 27.68493) return '🌘';
     else return '🌑';
 }
+
+// Original shortcode: "Tue 🌘 07-22-25"
 function show_day_moon_date() {
-    $day  = date('D');
-    $date = date('m-d-y');
+    $day  = date('D');          // Short day name
+    $date = date('m-d-y');      // Numeric format
     $moon = get_moon_phase_icon();
     return esc_html("$day $moon $date");
 }
 add_shortcode('current_day_moon_date', 'show_day_moon_date');
+
+// New shortcode: "Tuesday 🌘 Jul 22, 2025"
+function show_full_day_moon_date() {
+    $day  = date('l');          // Full day name
+    $date = date('M d, Y');     // Month name format
+    $moon = get_moon_phase_icon();
+    return esc_html("$day $moon $date");
+}
+add_shortcode('full_day_moon_date', 'show_full_day_moon_date');
+
 
 // Function to calculate days until next full moon
 function get_days_until_full_moon() {
