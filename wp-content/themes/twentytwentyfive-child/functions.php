@@ -477,10 +477,8 @@ add_action('pre_get_posts', 'exclude_current_post_in_secondary_queries');
 
 
 
-function limit_uploaded_image_size($metadata) {
-    if (!empty($metadata['width']) && $metadata['width'] > 1280) {
-        $metadata['width'] = 1280;
-    }
-    return $metadata;
-}
-add_filter('wp_generate_attachment_metadata', 'limit_uploaded_image_size');
+add_filter('intermediate_image_sizes_advanced', function($sizes) {
+    unset($sizes['1536x1536']);
+    unset($sizes['2048x2048']);
+    return $sizes;
+});
