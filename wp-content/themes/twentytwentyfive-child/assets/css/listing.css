@@ -13,8 +13,8 @@ article.wp-site-blocks {
 }
 
 .article-list-view section {
-  padding-right: var(--wp--style--root--padding-right);
-  padding-left: var(--wp--style--root--padding-left);
+  padding-right: 3.75vw;
+  padding-left: 3.75vw;
   margin-block-start: 0;
   margin-block-end: 0;
 }
@@ -32,8 +32,8 @@ article.wp-site-blocks {
 }
 .article-list-view section .wp-block-term-description {
   max-width: var(--wp--style--global--content-size);
-  margin-left: auto !important;
-  margin-right: auto !important;
+  margin-left: auto;
+  margin-right: auto;
   margin-block-start: 1.4444em;
   margin-block-end: 0;
   text-align: center;
@@ -41,4 +41,99 @@ article.wp-site-blocks {
 .article-list-view section .wp-block-term-description p {
   margin-block-start: 0;
   margin-block-end: 0;
+}
+
+.archive__content {
+  padding-right: 3.75vw;
+  padding-left: 3.75vw;
+  margin-block-start: 1.4444em;
+  margin-block-end: 0;
+}
+
+.archive__content ul {
+  max-inline-size: var(--wp--custom--mid-size, 38rem);
+  margin-left: auto;
+  margin-right: auto;
+  margin-block-end: 0;
+  margin-block-start: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: var(--wp--preset--spacing--70, 2.5em);
+  padding: 0px;
+}
+
+.archive__content ul li {
+  display: flex;
+  column-gap: var(--wp--preset--spacing--40, 1em);
+  row-gap: var(--wp--preset--spacing--20, 0.359375em);
+  flex-wrap: wrap;
+}
+
+.archive__content ul li figure {
+  flex-basis: 15em;
+  flex-shrink: 0;
+  flex-grow: 1;
+  max-inline-size: 100%;
+  margin: 0px;
+}
+
+.archive__content ul li .archive__title {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 15em;
+  gap: var(--wp--preset--spacing--20, 0.359375em);
+  padding-block: var(--wp--preset--spacing--20, 0.359375em);
+  flex-shrink: 0;
+  flex-grow: 1;
+  max-inline-size: 100%;
+}
+
+.archive__content ul li .archive__title h2 {
+  font-size: var(--wp--preset--font-size--lg-text);
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+.archive__content ul li .archive__title h2 a {
+  color: var(--color-text-contrast-high);
+}
+
+.archive__content ul li .archive__title h2 a:hover {
+  text-decoration: underline;
+}
+
+.archive__content ul li .archive__title .wp-block-post-author {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  margin-top: 0.5em;
+  font-size: var(--wp--preset--font-size--xs-text);
+}
+
+.archive__content ul li .wp-block-post-author__avatar {
+  line-height: 1;
+}
+
+.archive__content ul li .archive__title .wp-block-post-author img {
+  inline-size: 2em;
+  block-size: 2em;
+  object-fit: cover;
+  border-radius: 50%;
+  object-position: center center;
+}
+
+.archive__content ul li .archive__title .wp-block-post-author p {
+  font-family: var(--wp--preset--font-family--secondary);
+  font-weight: 600;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+.archive__content ul li .archive__title .wp-block-post-author a {
+  color: var(--color-text-contrast-high);
+}
+
+.archive__content ul li .archive__title .wp-block-post-author a:hover {
+  text-decoration: underline;
 }
