@@ -476,36 +476,27 @@ function exclude_current_post_in_secondary_queries($query) {
 add_action('pre_get_posts', 'exclude_current_post_in_secondary_queries');
 
 
-function custom_user_profile_picture_field($user) {
-    ?>
-    <h3>Custom Profile Picture</h3>
-    <table class="form-table">
-        <tr>
-            <th><label for="custom_profile_picture">Upload Image</label></th>
-            <td>
-                <input type="file" name="custom_profile_picture" id="custom_profile_picture"><br>
-                <?php 
-                    $profile_image = get_user_meta($user->ID, 'custom_profile_picture', true);
-                    if ($profile_image) {
-                        echo '<img src="' . esc_url($profile_image) . '" style="max-width:100px;">';
-                    }
-                ?>
-            </td>
-        </tr>
-    </table>
-    <?php
-}
-add_action('show_user_profile', 'custom_user_profile_picture_field');
-add_action('edit_user_profile', 'custom_user_profile_picture_field');
- 
-function save_custom_user_profile_picture($user_id) {
-    if (!empty($_FILES['custom_profile_picture']['name'])) {
-        $uploaded = media_handle_upload('custom_profile_picture', 0);
-        if (!is_wp_error($uploaded)) {
-            $url = wp_get_attachment_url($uploaded);
-            update_user_meta($user_id, 'custom_profile_picture', $url);
-        }
+
+function custom_featured_image_html($html, $post_id, $post_thumbnail_id, $size, $attr) {
+    // Modify only for specific image size
+    if ($size === 'medium_large') {
+        $image_url = wp_get_attachment_image_url($post_thumbnail_id, $size);
+        $srcset    = wp_get_attachment_image_srcset($post_thumbnail_id, $size);
+        $sizes     = '(max-width: 768px) 100vw, 768px';
+        $alt       = get_post_meta($post_thumbnail_id, '_wp_attachment_image_alt', true);
+
+        $html = '<img 
+            src="' . esc_url($image_url) . '" 
+            srcset="' . esc_attr($srcset) . '" 
+            sizes="' . esc_attr($sizes) . '" 
+            alt="' . esc_attr($alt) . '" 
+            decoding="async" 
+            loading="lazy" 
+            class="wp-post-image object-position-center-center" 
+            style="width:100%;height:100%;object-fit:cover;" />';
     }
+
+    return $html;
 }
-add_action('personal_options_update', 'save_custom_user_profile_picture');
-add_action('edit_user_profile_update', 'save_custom_user_profile_picture');
+add_filter('post_thumbnail_html', 'custom_featured_image_html', 10, 5);
+
