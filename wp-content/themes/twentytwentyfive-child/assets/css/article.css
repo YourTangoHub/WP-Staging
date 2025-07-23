@@ -135,8 +135,8 @@ h1 {
 }
 .entry-content .custom-toc::before, .entry-content .custom-toc::after {
   content: "";
-  -webkit-mask-image: url("http://localhost/wp-staging/wp-content/uploads/2025/07/cw-svg-mask-squiggle.png");
-  mask-image: url("http://localhost/wp-staging/wp-content/uploads/2025/07/cw-svg-mask-squiggle.png");
+  -webkit-mask-image: url("https://stg-wpstaging-staging.kinsta.cloud/wp-content/uploads/2025/07/cw-svg-mask-squiggle.png");
+  mask-image: url("https://stg-wpstaging-staging.kinsta.cloud/wp-content/uploads/2025/07/cw-svg-mask-squiggle.png");
   inline-size: 1em;
   aspect-ratio: 21/5;
   background-color: currentColor;
