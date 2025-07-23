@@ -477,26 +477,14 @@ add_action('pre_get_posts', 'exclude_current_post_in_secondary_queries');
 
 
 
-function custom_featured_image_html($html, $post_id, $post_thumbnail_id, $size, $attr) {
-    // Modify only for specific image size
-    if ($size === 'medium_large') {
-        $image_url = wp_get_attachment_image_url($post_thumbnail_id, $size);
-        $srcset    = wp_get_attachment_image_srcset($post_thumbnail_id, $size);
-        $sizes     = '(max-width: 768px) 100vw, 768px';
-        $alt       = get_post_meta($post_thumbnail_id, '_wp_attachment_image_alt', true);
-
-        $html = '<img 
-            src="' . esc_url($image_url) . '" 
-            srcset="' . esc_attr($srcset) . '" 
-            sizes="' . esc_attr($sizes) . '" 
-            alt="' . esc_attr($alt) . '" 
-            decoding="async" 
-            loading="lazy" 
-            class="wp-post-image object-position-center-center" 
-            style="width:100%;height:100%;object-fit:cover;" />';
-    }
-
-    return $html;
+function register_custom_image_sizes() {
+    add_image_size('custom-384', 384, 277, true);
+    add_image_size('custom-640', 640, 462, true);
+    add_image_size('custom-768', 768, 555, true);
+    add_image_size('custom-1024', 1024, 740, true);
+    add_image_size('custom-1280', 1280, 925, true);
+    add_image_size('custom-1536', 1536, 1110, true);
+    add_image_size('custom-2048', 2048, 1480, true);
+    add_image_size('custom-2560', 2560, 1850, true);
 }
-add_filter('post_thumbnail_html', 'custom_featured_image_html', 10, 5);
-
+add_action('after_setup_theme', 'register_custom_image_sizes');
