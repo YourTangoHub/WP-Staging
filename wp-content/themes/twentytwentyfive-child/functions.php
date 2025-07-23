@@ -483,8 +483,5 @@ function register_custom_image_sizes() {
     add_image_size('custom-768', 768, 555, true);
     add_image_size('custom-1024', 1024, 740, true);
     add_image_size('custom-1280', 1280, 925, true);
-    add_image_size('custom-1536', 1536, 1110, true);
-    add_image_size('custom-2048', 2048, 1480, true);
-    add_image_size('custom-2560', 2560, 1850, true);
 }
 add_action('after_setup_theme', 'register_custom_image_sizes');
