@@ -75,7 +75,7 @@ article.wp-site-blocks {
       flex-wrap: wrap;
 
       figure {
-        flex-basis: 15em;
+        flex-basis: 11em;
         flex-shrink: 0;
         flex-grow: 1;
         max-inline-size: 100%;
@@ -85,7 +85,7 @@ article.wp-site-blocks {
       .archive__title {
         display: flex;
         flex-direction: column;
-        flex-basis: 15em;
+        flex-basis: 11em;
         gap: var(--wp--preset--spacing--20, calc(1.4375em / 4));
         padding-block: var(--wp--preset--spacing--20, calc(1.4375em / 4));
         flex-shrink: 0;
@@ -142,5 +142,73 @@ article.wp-site-blocks {
         }
       }
     }
+
+    li:first-of-type figure, li:first-of-type .archive__title{ flex-basis: 15em; }
   }
 }
+
+/*Pagination*/
+.main-pagination {
+  padding-right: 3.75vw;
+  padding-left: 3.75vw;
+  margin-block-start: 1.4444em;
+  margin-block-end: 0;
+
+  .pagination-container {
+    max-inline-size: var(--wp--custom--mid-size, 38rem);
+    margin-left: auto;
+    margin-right: auto;
+    margin-block-start: 0;
+    margin-block-end: 0;
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      row-gap: 0.5em;
+      column-gap: 0;
+      padding: 0.5em;
+      border: 2px solid #E5E5E5;
+      border-radius: 0.5em;
+      text-align: center;
+      color: var(--primary);
+
+      > a {
+        display: inline-block;
+        padding: 0.375em;
+        min-inline-size: 2.25em;
+        flex-shrink: 0;
+        border-radius: 0.5em;
+        padding-inline: 1em;
+        margin: 0;
+        color: var(--color-background);
+        background-color: var(--primary);
+      }
+
+      .wp-block-query-pagination-numbers {
+        > * {
+          display: inline-block;
+          padding: 0.375em;
+          min-inline-size: 2.25em;
+          flex-shrink: 0;
+          border-radius: 0.5em;
+        }
+
+        span {
+          color: var(--color-background);
+          background-color: var(--primary);
+        }
+
+        a {
+          color: currentColor;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}
+/*Pagination*/
