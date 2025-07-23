@@ -477,11 +477,10 @@ add_action('pre_get_posts', 'exclude_current_post_in_secondary_queries');
 
 
 
-function register_custom_image_sizes() {
-    add_image_size('custom-384', 384, 277, true);
-    add_image_size('custom-640', 640, 462, true);
-    add_image_size('custom-768', 768, 555, true);
-    add_image_size('custom-1024', 1024, 740, true);
-    add_image_size('custom-1280', 1280, 925, true);
+function limit_uploaded_image_size($metadata) {
+    if (!empty($metadata['width']) && $metadata['width'] > 1280) {
+        $metadata['width'] = 1280;
+    }
+    return $metadata;
 }
-add_action('after_setup_theme', 'register_custom_image_sizes');
+add_filter('wp_generate_attachment_metadata', 'limit_uploaded_image_size');
