@@ -1,0 +1,13 @@
+.site__content {
+  padding-block-start: var(--wp--preset--spacing--40, 1em);
+}
+
+.site__primary {
+  margin-block-start: var(--wp--preset--spacing--40, 1em);
+}
+
+article.wp-site-blocks {
+  display: flow-root;
+  padding-top: 1.6667em;
+  padding-bottom: 1.6667em;
+}
