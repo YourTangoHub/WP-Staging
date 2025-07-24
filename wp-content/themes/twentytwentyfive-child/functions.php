@@ -98,7 +98,9 @@ add_action('wp_enqueue_scripts', function () {
         );
     }
 
-    if (is_archive() || is_category() || is_tag() || is_preview()) {
+    if (
+    (is_archive() || is_category() || is_tag() || is_preview() || (is_page() && !is_front_page()))
+    ) {
         wp_enqueue_style(
             'listing-style',
             get_stylesheet_directory_uri() . '/assets/css/listing.css',
@@ -476,9 +478,10 @@ function exclude_current_post_in_secondary_queries($query) {
 add_action('pre_get_posts', 'exclude_current_post_in_secondary_queries');
 
 
-
-add_filter('intermediate_image_sizes_advanced', function($sizes) {
-    unset($sizes['1536x1536']);
-    unset($sizes['2048x2048']);
-    return $sizes;
+// Author Title Change
+add_filter( 'get_the_archive_title', function( $title ) {
+    if ( is_author() ) {
+        $title = str_replace( 'Author:', 'Articles by', $title );
+    }
+    return $title;
 });

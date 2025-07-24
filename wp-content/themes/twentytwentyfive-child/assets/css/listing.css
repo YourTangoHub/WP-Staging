@@ -30,7 +30,7 @@ article.wp-site-blocks {
   margin-block-start: 0;
   margin-block-end: 0;
 }
-.article-list-view section .wp-block-term-description {
+.article-list-view section .wp-block-term-description, .article-list-view section .wp-block-post-author-biography {
   max-width: var(--wp--style--global--content-size);
   margin-left: auto;
   margin-right: auto;
@@ -38,7 +38,7 @@ article.wp-site-blocks {
   margin-block-end: 0;
   text-align: center;
 }
-.article-list-view section .wp-block-term-description p {
+.article-list-view section .wp-block-term-description p, .article-list-view section .wp-block-post-author-biography p {
   margin-block-start: 0;
   margin-block-end: 0;
 }
@@ -185,3 +185,54 @@ article.wp-site-blocks {
 }
 
 /*Pagination*/
+main[style], div[style] {
+  margin: 0px !important;
+  padding: 0px !important;
+}
+
+main[style] > div > h1 {
+  display: none;
+}
+
+.article-list-view .author-details {
+  margin-block-start: 1.4444em;
+}
+.article-list-view .author-details:first-child {
+  margin-block-start: 0px;
+}
+.article-list-view .author-details h1,
+.article-list-view .author-details h2 {
+  max-width: var(--wp--style--global--wide-size);
+  font-family: var(--wp--preset--font-family--secondary);
+  margin-left: auto;
+  margin-right: auto;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  color: var(--color-text);
+  text-align: center;
+}
+.article-list-view .author-details h1 {
+  font-weight: 300;
+  line-height: 1.1555555556;
+  font-size: var(--wp--preset--font-size--lg-title);
+}
+.article-list-view .author-details h2 {
+  font-weight: 400;
+  font-size: var(--wp--preset--font-size--md-title);
+}
+.article-list-view .author-details h2 span {
+  display: block;
+}
+.article-list-view section .wp-block-avatar {
+  max-inline-size: 9.5em;
+  margin-left: auto;
+  margin-right: auto;
+}
+.article-list-view section .wp-block-avatar img {
+  height: auto;
+  max-width: 100%;
+  vertical-align: bottom;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 9999px;
+}
