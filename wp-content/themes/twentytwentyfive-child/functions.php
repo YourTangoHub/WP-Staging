@@ -31,6 +31,7 @@ function pm_remove_all_styles() {
         'listing-style',
         'home-style',
         'notfound-style',
+        'page-style',
     );
 
     foreach ($wp_styles->queue as $key => $handle) {
@@ -100,13 +101,22 @@ add_action('wp_enqueue_scripts', function () {
     }
 
     if (
-    (is_archive() || is_category() || is_tag() || is_preview() || is_search() || (is_page() && !is_front_page()))
+    (is_archive() || is_category() || is_tag() || is_preview() || is_search() || (is_page('latest')))
     ) {
         wp_enqueue_style(
             'listing-style',
             get_stylesheet_directory_uri() . '/assets/css/listing.css',
             array(),
             filemtime(get_stylesheet_directory() . '/assets/css/listing.css')
+        );
+    }
+
+    if (is_page() || is_preview()) {
+        wp_enqueue_style(
+            'page-style',
+            get_stylesheet_directory_uri() . '/assets/css/page.css',
+            array(),
+            filemtime(get_stylesheet_directory() . '/assets/css/page.css')
         );
     }
 
@@ -164,6 +174,13 @@ function pm_enqueue_block_editor_styles() {
         get_stylesheet_directory_uri() . '/assets/css/listing.css',
         array(),
         filemtime(get_stylesheet_directory() . '/assets/css/listing.css')
+    );
+
+    wp_enqueue_style(
+        'page-style',
+        get_stylesheet_directory_uri() . '/assets/css/page.css',
+        array(),
+        filemtime(get_stylesheet_directory() . '/assets/css/page.css')
     );
 
     wp_enqueue_style(
