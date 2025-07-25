@@ -166,6 +166,9 @@ article.wp-site-blocks {
   color: var(--color-background);
   background-color: var(--primary);
 }
+.main-pagination .pagination-container nav > a .is-arrow-arrow {
+  display: none;
+}
 .main-pagination .pagination-container nav .wp-block-query-pagination-numbers > * {
   display: inline-block;
   padding: 0.375em;
