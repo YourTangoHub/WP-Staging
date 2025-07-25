@@ -9,7 +9,7 @@
 section.wp-site-blocks {
   display: flow-root;
   padding-top: 1.6667em;
-  padding-bottom: 1.6667em;
+  padding-bottom: 2.7778em;
 }
 
 section .notfound-section {
@@ -32,9 +32,36 @@ section .notfound-section h1 {
   margin-block-end: 0;
   text-align: center;
 }
-section .notfound-section form {
-  margin-block-start: 1.4444em;
-}
 section .notfound-section form label {
   display: none;
+}
+section .notfound-section form .wp-block-search__inside-wrapper {
+  margin-block-start: 0.75em;
+  max-inline-size: var(--wp--custom--mid-size, 38rem);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--wp--preset--spacing--30, 0.71875em);
+  margin-left: auto;
+  margin-right: auto;
+}
+section .notfound-section form .wp-block-search__inside-wrapper input {
+  font-weight: 600;
+  font-size: var(--wp--preset--font-size--lg-text);
+  font-family: var(--wp--preset--font-family--secondary);
+  padding: var(--wp--preset--spacing--30, 0.71875em);
+  border-radius: var(--wp--preset--spacing--20, 0.359375em);
+  border-width: 2px;
+  border-color: #e5e5e5;
+  flex-grow: 1;
+}
+section .notfound-section form .wp-block-search__inside-wrapper button {
+  flex-basis: 6.5em;
+  font-weight: 600;
+  font-size: var(--wp--preset--font-size--lg-text);
+  font-family: var(--wp--preset--font-family--secondary);
+  padding: var(--wp--preset--spacing--30, 0.71875em);
+  border-radius: var(--wp--preset--spacing--20, 0.359375em);
+  border-width: 2px;
+  margin: 0px;
 }

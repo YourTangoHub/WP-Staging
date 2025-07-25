@@ -100,7 +100,7 @@ add_action('wp_enqueue_scripts', function () {
     }
 
     if (
-    (is_archive() || is_category() || is_tag() || is_preview() || (is_page() && !is_front_page()))
+    (is_archive() || is_category() || is_tag() || is_preview() || is_search() || (is_page() && !is_front_page()))
     ) {
         wp_enqueue_style(
             'listing-style',
@@ -502,3 +502,12 @@ add_filter( 'get_the_archive_title', function( $title ) {
     }
     return $title;
 });
+
+
+// Search only post not pages
+function filter_search_only_posts($query) {
+    if (!is_admin() && $query->is_main_query() && $query->is_search()) {
+        $query->set('post_type', 'post');
+    }
+}
+add_action('pre_get_posts', 'filter_search_only_posts');
