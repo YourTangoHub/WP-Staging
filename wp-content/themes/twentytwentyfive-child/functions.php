@@ -528,3 +528,17 @@ function filter_search_only_posts($query) {
     }
 }
 add_action('pre_get_posts', 'filter_search_only_posts');
+
+
+
+
+// 
+
+function custom_latest_page_rewrite_rule() {
+    add_rewrite_rule(
+        '^latest/page/([0-9]+)/?$',
+        'index.php?pagename=latest&paged=$matches[1]',
+        'top'
+    );
+}
+add_action('init', 'custom_latest_page_rewrite_rule');
