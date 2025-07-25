@@ -6,8 +6,40 @@
   margin-block-start: var(--wp--preset--spacing--40, 1em);
 }
 
-article.wp-site-blocks {
+section.wp-site-blocks {
   display: flow-root;
   padding-top: 1.6667em;
   padding-bottom: 1.6667em;
-} 
+}
+
+section {
+  .notfound-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--wp--preset--spacing--30, 0.71875em);
+    margin-block-start: 0;
+    padding-right: 3.75vw;
+    padding-left: 3.75vw;
+    margin-block-end: 0;
+
+    h1 {
+      max-width: var(--wp--style--global--content-size);
+      margin-left: auto;
+      margin-right: auto;
+      font-family: var(--wp--preset--font-family--secondary);
+      font-size: var(--wp--preset--font-size--lg-title);
+      font-weight: 300;
+      margin-block-start: 0;
+      margin-block-end: 0;
+      text-align: center;
+    }
+
+    form {
+      margin-block-start: 1.4444em;
+
+      label {
+        display: none;
+      }
+    }
+  }
+}
