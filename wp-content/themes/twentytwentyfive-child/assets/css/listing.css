@@ -188,12 +188,7 @@ article.wp-site-blocks {
 }
 
 /*Pagination*/
-main[style], div[style] {
-  margin: 0px !important;
-  padding: 0px !important;
-}
-
-main[style] > div > h1 {
+main > div > section > h1 {
   display: none;
 }
 

@@ -111,7 +111,7 @@ add_action('wp_enqueue_scripts', function () {
         );
     }
 
-    if (is_page() || is_preview()) {
+    if ((is_page() && !is_page('latest')) || is_preview()) {
         wp_enqueue_style(
             'page-style',
             get_stylesheet_directory_uri() . '/assets/css/page.css',
